@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="hibernate.FileData.FileData" table="filedata">
+        <id name="id" column="id" type="integer">
+            <generator class="native"/>
+        </id>
+
+        <!--TODO:authorid 和 fid 是否重复了？一般来说authorid和fid绑定，知道fid就知道authorid-->
+        <many-to-one name="authorId" column="authorid"/>
+        <!--TODO:建议单独设置文件观看者-->
+        <many-to-one name="visitorId" column="visitorid"/>
+        <many-to-one name="fid" column="fid"/>
+        <property name="type" column="type" type="integer"/>
+        <property name="created_at" column="created_at" type="date"/>
+        <property name="updated_at" column="updated_at" type="date"/>
+    </class>
+</hibernate-mapping>

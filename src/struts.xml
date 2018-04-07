@@ -5,4 +5,37 @@
         "http://struts.apache.org/dtds/struts-2.5.dtd">
 
 <struts>
+    <constant name="struts.enable.DynamicMethodInvocation" value="true"/>
+    <package name="global" extends="struts-default">
+        <interceptors>
+            <interceptor name="loginInterceptor" class="Login.LoginInterceptor"/>
+            <interceptor-stack name="default">
+                <interceptor-ref name="defaultStack"/>
+                <interceptor-ref name="loginInterceptor"/>
+            </interceptor-stack>
+        </interceptors>
+    <default-interceptor-ref name="default"/>
+    <global-results>
+        <result name="login">/Login.jsp</result>
+    </global-results>
+
+    </package>
+    <package name="login" namespace="/login" extends="struts-default">
+        <action name="valibate" class="Login.LoginPageCheck">
+            <result name="success" type="redirectAction">
+                <param name="actionName">TypeSelect</param>
+                <param name="namespace">/</param>
+                <param name="method">Type</param>
+            </result>
+            <result name="login">/Login.jsp</result>
+        </action>
+    </package>
+    <package name="MainPage" namespace="/" extends="global">
+        <action name="TypeSelect" class="Login.TypeSelect">
+            <result name="admin">/HomePage.jsp</result>
+            <result name="normal">/index.jsp</result>
+            <result name="login">/Login.jsp</result>
+            <allowed-methods> Type</allowed-methods>
+        </action>
+    </package>
 </struts>

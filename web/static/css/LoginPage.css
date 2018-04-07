@@ -1,0 +1,235 @@
+html {
+    font-family: "Microsoft YaHei", "Segoe UI", "Lucida Grande", Helvetica, Arial, sans-serif, FreeSans, Arimo;
+    background-color: #000000;
+    color: #777;
+}
+
+.container {
+    position: relative;
+    max-width: 360px;
+    margin: 0 auto;
+    margin-top: 30px;
+    padding: 45px 20px;
+    border-radius: 4px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    background-color: #fff;
+    box-sizing: border-box;
+}
+
+.container > .logo {
+    height: 150px;
+    width: 150px;
+    position: relative;
+    background-color: #EFEFEF;
+    border-radius: 75px;
+    margin: 0 auto
+}
+
+.container > .logo > .logo-block-top {
+    box-sizing: border-box;
+    height: 45px;
+    width: 54px;
+    border: 10px solid #F57C00;
+    border-bottom: 0;
+    position: absolute;
+    border-radius: 27px 27px 0 0;
+    left: 48px;
+    z-index: 1001;
+    top: 20px;
+}
+
+.container > .logo > .logo-block-bottom::before {
+    content: " ";
+    position: absolute;
+    height: 12px;
+    width: 12px;
+    background-color: #EFEFEF;
+    border-radius: 5px;
+    top: 22px;
+    left: 34px;
+    box-sizing: border-box;
+}
+
+.container > .logo > .logo-block-bottom::after {
+    content: " ";
+    position: absolute;
+    height: 12px;
+    width: 6px;
+    background-color: #EFEFEF;
+    border-radius: 2px;
+    top: 30px;
+    left: 37px;
+    box-sizing: border-box;
+}
+
+.container > .logo > .logo-block-bottom {
+    position: absolute;
+    height: 60px;
+    width: 80px;
+    box-sizing: border-box;
+    background-color: #FFA000;
+    z-index: 1001;
+    top: 65px;
+    left: 35px;
+    border-radius: 7px;
+}
+
+.container > .login-header {
+    text-align: center;
+    font-size: 23px;
+    color: #FF4081;
+    font-weight: 400;
+    margin: 15px 0 18px 0;
+}
+
+.container > .content {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.container > .content > .form-group {
+    position: relative;
+}
+
+.container > .content > .form-group > .form-input {
+    z-index: 3;
+    position: relative;
+    height: 58px;
+    width: 100%;
+    border: 0px;
+    border-bottom: 1px solid #777;
+    padding-top: 22px;
+    color: #FF4081;
+    font-size: 14px;
+    background: none;
+    box-sizing: border-box;
+    outline: none;
+    display: inline-block;
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+}
+
+.radio-label {
+    margin: 20px 20px 0 0;
+    display: inline-block
+}
+
+.radio {
+    display: none
+}
+
+.radioInput {
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 100%;
+    display: inline-block;
+    height: 16px;
+    margin-right: 10px;
+    margin-top: -1px;
+    vertical-align: middle;
+    width: 16px;
+    line-height: 1
+}
+
+.radio:checked + .radioInput:after {
+    background-color: #57ad68;
+    border-radius: 100%;
+    content: "";
+    display: inline-block;
+    height: 12px;
+    margin: 2px;
+    width: 12px
+}
+
+.demo--checkbox.radioInput, .radio:checked, .radioInput:after {
+    border-radius: 0
+}
+
+.container > .content > .form-group > :first-child {
+    margin-bottom: 5px;
+}
+
+.container > .content > .form-group > .form-input:focus,
+.container > .content > .form-group > .form-input:valid {
+    box-shadow: 0 1px #FF4081;
+    border-color: #FF4081;
+}
+
+.container > .content > .form-group > .form-input:focus + .form-label,
+.container > .content > .form-group > .form-input:valid + .form-label {
+    font-size: 12px;
+    -ms-transform: translateY(-20px);
+    -webkit-transform: translateY(-20px);
+    transform: translateY(-25px);
+}
+
+.submit-button {
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #44c767), color-stop(1, #5cbf2a));
+    background: -moz-linear-gradient(top, #44c767 5%, #5cbf2a 100%);
+    background: -webkit-linear-gradient(top, #44c767 5%, #5cbf2a 100%);
+    background: -o-linear-gradient(top, #44c767 5%, #5cbf2a 100%);
+    background: -ms-linear-gradient(top, #44c767 5%, #5cbf2a 100%);
+    background: linear-gradient(to bottom, #44c767 5%, #5cbf2a 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#44c767', endColorstr='#5cbf2a', GradientType=0);
+    background-color: #44c767;
+    -moz-border-radius: 28px;
+    -webkit-border-radius: 28px;
+    border-radius: 28px;
+    margin-top: 12px;
+    border: 1px solid #18ab29;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Arial;
+    font-size: 17px;
+    padding: 16px 31px;
+    text-decoration: none;
+    text-shadow: 0px 1px 0px #2f6627;
+}
+
+.submit-button:hover {
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #5cbf2a), color-stop(1, #44c767));
+    background: -moz-linear-gradient(top, #5cbf2a 5%, #44c767 100%);
+    background: -webkit-linear-gradient(top, #5cbf2a 5%, #44c767 100%);
+    background: -o-linear-gradient(top, #5cbf2a 5%, #44c767 100%);
+    background: -ms-linear-gradient(top, #5cbf2a 5%, #44c767 100%);
+    background: linear-gradient(to bottom, #5cbf2a 5%, #44c767 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#5cbf2a', endColorstr='#44c767', GradientType=0);
+    background-color: #5cbf2a;
+}
+
+.submit-button:active {
+    position: relative;
+    top: 1px;
+}
+
+.container > .content > .option {
+    width: 100%;
+    height: 14px;
+    margin-top: 24px;
+    font-size: 16px;
+}
+
+.container > .content > .option > .option-left {
+    width: 50%;
+    float: left;
+}
+
+.container > .content > .option > .option-left > a,
+.container > .content > .option > .option-left > a:hover {
+    color: #FF4081;
+    text-decoration: none;
+}
+
+.container > .content > .option > .option-right {
+    width: 50%;
+    float: right;
+    text-align: right;
+    position: relative;
+}
+
+a, a:hover {
+    color: #FF4081;
+    text-decoration: none;
+}
+

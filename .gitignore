@@ -51,4 +51,4 @@ crashlytics-build.properties
 fabric.properties
 
 # ignored h.cfg.xml for hidden DataBase details
-/src/hibernate/hibernate.cfg.xml
+src/hibernate.cfg.xml

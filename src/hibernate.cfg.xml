@@ -5,9 +5,9 @@
 <hibernate-configuration>
     <session-factory>
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="connection.url">jdbc:mysql://localhost:3306/test</property>
-        <property name="connection.username">root</property>
-        <property name="connection.password">root</property>
+        <property name="connection.url">jdbc:mysql://118.89.44.152:3306/filesharesystem</property>
+        <property name="connection.username">jdbc</property>
+        <property name="connection.password">password</property>
         <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name="show_sql">true</property>
 
@@ -22,7 +22,11 @@
             org.hibernate.service.jdbc.connections.internal.C3P0ConnectionProvider
         </property>
 <!--记得要安装!!!-->
-        <mapping resource="hibernatetest/serializable/Student.hbm.xml"/>
-
+        <mapping resource="com/filesharesystem/models/File.hbm.xml"/>
+        <mapping resource="com/filesharesystem/models/FileData.hbm.xml"/>
+        <mapping resource="com/filesharesystem/models/FileCommit.hbm.xml"/>
+        <mapping resource="com/filesharesystem/models/User.hbm.xml"/>
+        <mapping resource="com/filesharesystem/models/UserData.hbm.xml"/>
+        <mapping resource="com/filesharesystem/models/IP.hbm.xml"/>
     </session-factory>
 </hibernate-configuration>

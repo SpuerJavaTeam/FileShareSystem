@@ -5,9 +5,9 @@
 <hibernate-configuration>
     <session-factory>
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-        <!--<property name="connection.url">jdbc:mysql://ip:port/database</property>-->
-        <!--<property name="connection.username">username</property>-->
-        <!--<property name="connection.password">password</property>-->
+        <property name="connection.url">jdbc:mysql://118.89.44.152:3306/filesharesystem</property>
+        <property name="connection.username">jdbc</property>
+        <property name="connection.password">password</property>
         <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name="show_sql">true</property>
 

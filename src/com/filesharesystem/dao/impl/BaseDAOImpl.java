@@ -18,9 +18,11 @@ public class BaseDAOImpl implements BaseDAO {
     @Override
     public boolean save_or_update(Object obj) {
         boolean ret = false;
-        Session session = SessionUtil.openSession();
-        Transaction transaction = session.beginTransaction();
+        Session session = null;
+        Transaction transaction = null;
         try {
+            session = SessionUtil.openSession();
+            transaction =  session.beginTransaction();
             session.saveOrUpdate(obj.getClass().getName(), obj);
             transaction.commit();
             ret = true;
@@ -28,10 +30,8 @@ public class BaseDAOImpl implements BaseDAO {
             e.printStackTrace();
             transaction.rollback();
         } finally {
-            // todo
-            // session not equals null is always on ture.
             if (session != null) {
-                SessionUtil.closeSession(session);
+               session.close();
             }
         }
 
@@ -47,9 +47,11 @@ public class BaseDAOImpl implements BaseDAO {
     @Override
     public boolean delete(Object obj) {
         boolean ret = false;
-        Session session = SessionUtil.openSession();
-        Transaction transaction = session.beginTransaction();
+        Session session = null;
+        Transaction transaction = null;
         try {
+            session = SessionUtil.openSession();
+            transaction = session.beginTransaction();
             session.delete(obj.getClass().getName(), obj);
             System.out.println(obj.getClass().getName());
             transaction.commit();
@@ -58,10 +60,8 @@ public class BaseDAOImpl implements BaseDAO {
             e.printStackTrace();
             transaction.rollback();
         } finally {
-//            session is always true. close session immediately.
-//            SessionUtil.closeSession(session);
             if (session != null) {
-                SessionUtil.closeSession(session);
+                session.close();
             }
         }
         return ret;
@@ -69,7 +69,7 @@ public class BaseDAOImpl implements BaseDAO {
     }
 
     /**
-     * 根据 类型 和 serializeUID 进行获取<b>不常用</b>
+     * 根据 类型 和 serializeUID 进行获取不常用
      *
      * @param class_
      * @param name
@@ -77,9 +77,22 @@ public class BaseDAOImpl implements BaseDAO {
      */
     @Override
     public Object get_obj_or_null (Class class_, String name) {
-        Session session = SessionUtil.openSession();
-        Object obj = session.get(class_.getClass(), name);
-        SessionUtil.closeSession(session);
+        Object obj= new Object();
+        Session session = null;
+        Transaction transaction = null;
+        try {
+            session = SessionUtil.openSession();
+            transaction = session.beginTransaction();
+            obj = session.get(class_.getClass(), name);
+            SessionUtil.closeSession(session);
+        } catch (Exception e) {
+            e.printStackTrace();
+            transaction.rollback();
+        } finally {
+            if ( session != null ){
+                session.close();
+            }
+        }
         return obj;
     }
 }

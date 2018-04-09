@@ -6,10 +6,15 @@ import com.filesharesystem.dao.impl.UserDAOImpl;
 import com.filesharesystem.dao.impl.UserDataDAOImpl;
 import com.filesharesystem.models.User;
 import com.filesharesystem.models.UserData;
+import com.filesharesystem.utils.DateUtil;
+import com.filesharesystem.utils.MD5Util;
 import com.opensymphony.xwork2.Action;
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.interceptor.SessionAware;
 
+import java.math.BigInteger;
+import java.security.MessageDigest;
 import java.util.Date;
 import java.util.Map;
 
@@ -22,7 +27,7 @@ import java.util.Map;
  */
 public class SignUpAction extends ActionSupport implements SessionAware {
     private static final long serialVersionUID = 8790215995796599624L;
-    private Map<String, Object> session;
+    private Map<String, Object> session = ActionContext.getContext().getSession();// 产生session
 
     private String uid;
     private String username;
@@ -37,17 +42,18 @@ public class SignUpAction extends ActionSupport implements SessionAware {
     @Override
     public String execute() {
         UserDAO userDAO = new UserDAOImpl();
+        String uuid = null;
         if (userDAO.getUser(username) != null) {
             return Action.ERROR;
         } else {
             User user = new User();
             user.setUsername(username);
+            user.setUid(MD5Util.getUUID(username)); // 生成User主键
             user.setPassword(password);
             user.setEmail(email);
-            // 不能添加UserData，因为User主键还未生成
             UserDataDAO dataDAO = new UserDataDAOImpl();
             userDAO.save_or_update(user);
-//            session.put("user",user); TODO:如何添加session，UUID还未生成
+            session.put("user",user);
             return Action.SUCCESS;
         }
 

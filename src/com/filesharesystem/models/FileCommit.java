@@ -14,7 +14,8 @@ public class FileCommit {
 
     public FileCommit() {
         Date date = new Date();
-        this.created_at = date;
+//        createdAt由数据库自动创建
+//        this.created_at = date;
         this.updated_at = date;
     }
 

@@ -13,7 +13,8 @@ public class FileData {
 
     public FileData() {
         Date date = new Date();
-        this.created_at = date;
+//        createdAt由数据库自动创建
+//        this.created_at = date;
         this.updated_at = date;
     }
 

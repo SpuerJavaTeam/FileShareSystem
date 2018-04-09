@@ -21,8 +21,8 @@ public class UserDAOImpl extends BaseDAOImpl implements UserDAO {
     @Override
     public List<User> queryByName(String name) {
         Session session = SessionUtil.openSession();
-        List<User> userList = session.createQuery("from User where User.username=:username").setString("username", name).list();
-        return userList;
+        List<User> users = session.createQuery("from User where User.username=:username").setString("username", name).list();
+        return users;
     }
 
     /**
@@ -34,14 +34,11 @@ public class UserDAOImpl extends BaseDAOImpl implements UserDAO {
     @Override
     public User getUser(String name) {
         Session session = SessionUtil.openSession();
-        List<User> uList = session
-                .createQuery("from User as u where u.username=:name")
-                .setString("name", name).list();
-        if (uList.isEmpty()) {
+        List<User> users = session.createQuery("from User as u where u.username=:name").setString("name", name).list();
+        if (user.isEmpty()) {
             return null;
         } else {
-            return uList.get(0);
+            return users.get(0);
         }
     }
-
 }

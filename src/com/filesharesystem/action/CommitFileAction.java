@@ -36,19 +36,22 @@ public class CommitFileAction extends ActionSupport implements SessionAware {
     @Override
     public String execute() {
         User user = (User) session.get("user");
+
         File file = new File();
         file.setFileName(fileName);
         file.setUid(user);
         file.setFileType(fileType);
+
         FileData fileData = new FileData();
         fileData.setAuthorId(user);
         fileData.setVisitorId(user);
         fileData.setFid(file);
+
         FileDAO fileDAO = new FileDAOImpl();
         FileDataDAO dataDAO = new FileDataDAOImpl();
         if (file != null && user.getStatus() != 3) {
-            fileDAO.save_or_update(file);
-            dataDAO.save_or_update(fileData);
+            fileDAO.saveOrUpdate(file);
+            dataDAO.saveOrUpdate(fileData);
             return Action.SUCCESS;
         } else {
             addActionError("文件为空/用户已被禁止活动");

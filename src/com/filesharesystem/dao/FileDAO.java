@@ -7,5 +7,7 @@ import java.util.List;
 public interface FileDAO extends BaseDAO {
     File getFile(String name);
 
-    List<File> queryByName(String name);
+    List<File[]> queryByName(String name);
+
+
 }

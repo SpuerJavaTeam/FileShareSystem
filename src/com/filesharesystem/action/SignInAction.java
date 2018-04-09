@@ -28,7 +28,7 @@ public class SignInAction extends ActionSupport implements SessionAware {
 
     public String execute() {
         User user = dao.getUser(username);
-        if (user != null && user.getPassword() == password) {
+        if (user != null && user.getPassword().equals(password)) {
             session.put("user", user);
             return Action.SUCCESS;
         } else {

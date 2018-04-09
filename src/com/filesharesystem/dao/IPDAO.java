@@ -1,6 +1,8 @@
 package com.filesharesystem.dao;
 
-public interface IPDAO extends BaseDAO {
+import com.filesharesystem.models.IP;
 
+public interface IPDAO extends BaseDAO {
     //TODO：见models.IP
+    boolean saveOrUpdate(IP ip);
 }

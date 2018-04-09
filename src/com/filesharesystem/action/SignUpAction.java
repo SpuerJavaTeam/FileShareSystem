@@ -48,11 +48,11 @@ public class SignUpAction extends ActionSupport implements SessionAware {
         } else {
             User user = new User();
             user.setUsername(username);
-            user.setUid(MD5Util.getUUID(username)); // 生成User主键
+            //user.setUid(MD5Util.getUUID(username)); // 生成User主键
             user.setPassword(password);
             user.setEmail(email);
             UserDataDAO dataDAO = new UserDataDAOImpl();
-            userDAO.save_or_update(user);
+            userDAO.saveOrUpdate(user);
             session.put("user",user);
             return Action.SUCCESS;
         }

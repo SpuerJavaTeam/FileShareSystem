@@ -16,7 +16,7 @@ public class BaseDAOImpl implements BaseDAO {
      * @return
      */
     @Override
-    public boolean save_or_update(Object obj) {
+    public boolean saveOrUpdate(Object obj) {
         boolean ret = false;
         Session session = null;
         Transaction transaction = null;
@@ -76,7 +76,7 @@ public class BaseDAOImpl implements BaseDAO {
      * @return
      */
     @Override
-    public Object get_obj_or_null (Class class_, String name) {
+    public Object getObject (Class class_, String name) {
         Object obj= new Object();
         Session session = null;
         Transaction transaction = null;
@@ -95,4 +95,5 @@ public class BaseDAOImpl implements BaseDAO {
         }
         return obj;
     }
+
 }

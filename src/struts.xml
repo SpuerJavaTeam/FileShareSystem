@@ -6,10 +6,11 @@
 
 <struts>
     <constant name="struts.enable.DynamicMethodInvocation" value="true"/>
+    <!--登录部分-->
     <package name="login" namespace="/login" extends="struts-default">
-        <action name="sign_up" class="com.filesharesystem.action.SignUpAction">
-            <result name="success">/OK.jsp</result>
-            <result name="error">/index.jsp</result>
+        <action name="signUp" class="com.filesharesystem.action.SignUpAction">
+            <result name="success">./OK.jsp</result>
+            <result name="error">./index.jsp</result>
         </action>
     </package>
 </struts>

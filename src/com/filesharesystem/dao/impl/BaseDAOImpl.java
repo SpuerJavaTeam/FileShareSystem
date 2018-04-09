@@ -6,6 +6,8 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.web.context.request.SessionScope;
 
+import java.util.Set;
+
 public class BaseDAOImpl implements BaseDAO {
     /**
      * 传入obj,根据obj的类型进行<b>保存和更改</b>
@@ -26,14 +28,18 @@ public class BaseDAOImpl implements BaseDAO {
             e.printStackTrace();
             transaction.rollback();
         } finally {
-            if (session != null)
+            // todo
+            // session not equals null is always on ture.
+            if (session != null) {
                 SessionUtil.closeSession(session);
+            }
         }
+
         return ret;
     }
 
     /**
-     * 传入obj 根据obj的类型进行<b>删除</b>
+     * 传入obj 根据obj的类型进行删除
      *
      * @param obj
      * @return
@@ -52,6 +58,8 @@ public class BaseDAOImpl implements BaseDAO {
             e.printStackTrace();
             transaction.rollback();
         } finally {
+//            session is always true. close session immediately.
+//            SessionUtil.closeSession(session);
             if (session != null) {
                 SessionUtil.closeSession(session);
             }
@@ -68,10 +76,10 @@ public class BaseDAOImpl implements BaseDAO {
      * @return
      */
     @Override
-    public Object get_obj_or_null(Class class_, String name) {
+    public Object get_obj_or_null (Class class_, String name) {
         Session session = SessionUtil.openSession();
         Object obj = session.get(class_.getClass(), name);
-        session.close();
+        SessionUtil.closeSession(session);
         return obj;
     }
 }

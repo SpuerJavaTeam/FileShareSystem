@@ -24,11 +24,15 @@ public class SessionUtil {
         return session;
     }
 
-    public static void closeSession(Session session) {
-        if (session != null) {
-            session.close();
-        } else {
+    public static void closeSession(Session session) throws Exception{
+        try {
+            if (session != null) {
+                session.close();
+            }
+        } finally {
             // TODO: log here
+            // 用户 :
+            System.out.println("session log");
         }
     }
 }

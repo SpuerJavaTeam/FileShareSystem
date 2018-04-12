@@ -3,31 +3,56 @@ package com.filesharesystem.dao.impl;
 import com.filesharesystem.dao.IPDAO;
 import com.filesharesystem.models.IP;
 import com.filesharesystem.utils.SessionUtil;
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
+import org.hibernate.criterion.SimpleExpression;
+
+import java.util.List;
 
 public class IPDAOImpl extends BaseDAOImpl implements IPDAO {
 //TODO：见models.IP
 
     @Override
-    public boolean saveOrUpdate(IP ip) {
-        boolean ret = false;
+    public List<IP> ipList(String uid){
         Session session = null;
         Transaction transaction = null;
+        List<IP> ipList = null;
         try {
             session = SessionUtil.openSession();
             transaction = session.beginTransaction();
-            session.save(ip);
+            Criteria criteria = session.createCriteria(IP.class);
+            criteria.add(Restrictions.eq("uid", uid));
+            ipList = criteria.list();
             transaction.commit();
-            ret = true;
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             transaction.rollback();
         } finally {
-            if( session != null) {
-                session.close();
-            }
+            if (session != null) session.close();
         }
-        return ret;
+        return ipList;
+    }
+
+    @Override
+    public List<IP> uidList(String ip) {
+        Session session = null;
+        Transaction transaction = null;
+        List<IP> ipList = null;
+        try {
+            session = SessionUtil.openSession();
+            transaction = session.beginTransaction();
+            Criteria criteria = session.createCriteria(IP.class);
+            criteria.add(Restrictions.eq("ipv4", ip));
+            ipList = criteria.list();
+            transaction.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            transaction.rollback();
+        } finally {
+            if (session != null) session.close();
+        }
+        return ipList;
     }
 }

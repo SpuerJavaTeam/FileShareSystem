@@ -10,7 +10,8 @@
 
         <property name="fileName" column="filename" type="string"/>
         <property name="fileType" column="filetype" type="string"/>
-        <!--连接到USER表 多对一的关系-->
+        <property name="path" column="path" type="string"/>
+         <!--连接到USER表 多对一的关系-->
         <many-to-one name="uid" column="uid"/>
         <property name="status" column="status" type="integer"/>
         <property name="type" column="type" type="integer"/>

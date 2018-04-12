@@ -5,9 +5,9 @@ import com.filesharesystem.models.File;
 import java.util.List;
 
 public interface FileDAO extends BaseDAO {
-    File getFile(String name);
+//    获取所有用户的文件列表
+    List<File> getFiles();
 
-    List<File[]> queryByName(String name);
-
-
+//    通过用户ID获取文件列表
+    List<File> getFileById(String uid);
 }

@@ -5,11 +5,16 @@
 <hibernate-configuration>
     <session-factory>
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-        <!--<property name="connection.url">jdbc:mysql://ip:port/database</property>-->
-        <!--<property name="connection.username">username</property>-->
-        <!--<property name="connection.password">password</property>-->
-        <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="connection.url">jdbc:mysql://118.89.44.152:3306/filesharesystem</property>
+        <property name="connection.username">jdbc</property>
+        <property name="connection.password">password</property>
+        <!-- 配置数据库方言dialect -->
+        <property name="dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property>
         <property name="show_sql">true</property>
+        <property name="format_sql">true</property>
+
+        <!-- 指定自动生成数据表的策略 -->
+        <property name="hbm2ddl.auto">update</property>
 
         <property name="c3p0.max_size">20</property>
         <property name="c3p0.min_size">5</property>

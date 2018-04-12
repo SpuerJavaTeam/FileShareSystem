@@ -8,12 +8,5 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 public class UserDataDAOImpl extends BaseDAOImpl implements UserDataDAO {
-
-
-    @Override
-    public UserData getUserData(String uid) {
-        Session session = SessionUtil.openSession();
-        UserData userData = (UserData) session.get(UserData.class, uid);
-        return userData;
-    }
+//    使用BaseDao
 }

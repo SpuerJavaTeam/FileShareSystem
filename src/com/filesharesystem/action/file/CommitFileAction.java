@@ -1,4 +1,4 @@
-package com.filesharesystem.action;
+package com.filesharesystem.action.file;
 
 import com.filesharesystem.dao.FileDAO;
 import com.filesharesystem.dao.FileDataDAO;
@@ -43,7 +43,6 @@ public class CommitFileAction extends ActionSupport implements SessionAware {
         file.setFileType(fileType);
 
         FileData fileData = new FileData();
-        fileData.setAuthorId(user);
         fileData.setVisitorId(user);
         fileData.setFid(file);
 

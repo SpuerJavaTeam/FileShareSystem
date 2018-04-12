@@ -43,7 +43,7 @@ public class SignUpAction extends ActionSupport implements SessionAware {
     public String execute() {
         UserDAO userDAO = new UserDAOImpl();
         String uuid = null;
-        if (userDAO.getUser(username) != null) {
+        if (userDAO.getUserByName(username) != null) {
             return Action.ERROR;
         } else {
             User user = new User();

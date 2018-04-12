@@ -132,6 +132,7 @@ IP地址记录表
     | fid      | varchar(50) | NO   | Pri | NULL    |                |      ------ 文件id（md5值）
     | fileName | varchar(200)| NO   |     | NULL    |                |      ------ 文件名称
     | fileType | varchar(20) | No   |     | NULL    |                |      ------ 文件格式
+    | path     | varchar(500)| NO   |     | NULL    |                |      ------ 文件保存路径(绝对)
     | uid      | varchar(50) | No   | For | NULL    |                |      ------ 用户id（md5值）
     | status   | int(1)      | No   |     | 1       |                |      ------ 文件状态（0为未通过审核，1为通过审核，2为被举报，3为被管理员删除）
     | type     | int(1)      | No   |     | 1       |                |      ------ 文件私有化（0为私有，1为公开）
@@ -160,7 +161,6 @@ IP地址记录表
     | Field    | Type        | Null | Key | Default | Extra          |
     +----------+-------------+------+-----+---------+----------------+
     | id       | int(11)     | NO   | Pri | NULL    | auto_increment |      ------ 记录id（自增）
-    | authorid | varchar(50) | NO   | Fro | NULL    |                |      ------ 发布者id（md5值）
     | visitorid| varchar(50) | NO   | Fro | NULL    |                |      ------ 操作者id（md5值）
     | fid      | varchar(50) | No   |     | NULL    |                |      ------ 文件id（md5值）
     | type     | int(1)      | No   |     | NULL    |                |      ------ 操作状态（1为浏览、2为收藏、3为下载）
@@ -170,14 +170,12 @@ IP地址记录表
 
     create table filesharesystem.filedata(
         id int auto_increment,
-        authorid varchar(50) not null,
         visitorid varchar(50) not null,
         fid varchar(50) not null,
         type int(1) not null,
         created_at timestamp not null,
         updated_at timestamp not null,
         primary key(id),
-        foreign key(authorid) references user(uid),
         foreign key(visitorid) references user(uid),
         foreign key(fid) references file(fid)
     )
@@ -214,6 +212,9 @@ IP地址记录表
         foreign key(fid) references file(fid),
         check(level>0 and level <6)
     )
+
+## 功能实现思路
+文件浏览记录:使用ajax异步传输数据,或者采用用户点击的方式进行数据的保存.
 
 ## 程序设计
 ### intellij idea文件目录结构

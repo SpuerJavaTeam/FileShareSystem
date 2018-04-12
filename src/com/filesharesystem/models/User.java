@@ -1,8 +1,9 @@
 package com.filesharesystem.models;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class User {
+public class User{
     private String uid;
     private String username;
     private String password;

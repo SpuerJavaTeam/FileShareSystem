@@ -5,8 +5,11 @@
 <hibernate-mapping>
     <class name="com.filesharesystem.models.UserData" table="userdata">
         <id name="uid" column="uid" type="string">
-            <generator class="assigned"/>
+            <generator class="foreign">
+                <param name="property">user</param>
+            </generator>
         </id>
+        <one-to-one name="user" constrained="true"/>
         <property name="gender" column="gender" type="integer"/>
         <property name="age" column="age" type="integer"/>
         <property name="birthday" column="birthday" type="timestamp"/>

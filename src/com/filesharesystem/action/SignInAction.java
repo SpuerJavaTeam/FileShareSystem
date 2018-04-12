@@ -1,9 +1,7 @@
 package com.filesharesystem.action;
 
 import com.filesharesystem.dao.UserDAO;
-import com.filesharesystem.dao.UserDataDAO;
 import com.filesharesystem.dao.impl.UserDAOImpl;
-import com.filesharesystem.dao.impl.UserDataDAOImpl;
 import com.filesharesystem.models.User;
 import com.opensymphony.xwork2.Action;
 import com.opensymphony.xwork2.ActionSupport;
@@ -27,12 +25,16 @@ public class SignInAction extends ActionSupport implements SessionAware {
     private Map<String, Object> session;
 
     public String execute() {
-        User user = dao.getUser(username);
-        if (user != null && user.getPassword().equals(password)) {
+        User user = dao.checkUser(username, password);
+        if (user != null) {
             session.put("user", user);
-            return Action.SUCCESS;
+            if ( user.getType() == 0 ) {
+                return "ADMIN";
+            } else {
+                return "USER";
+            }
         } else {
-            addActionError("无权限");
+            addActionError("用户未登陆");
             return INPUT;
         }
     }

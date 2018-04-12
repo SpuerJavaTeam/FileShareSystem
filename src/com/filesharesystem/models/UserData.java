@@ -11,6 +11,7 @@ public class UserData {
     private String phone;
     private Date created_at;
     private Date updated_at;
+    private User user;
 
     public UserData() {
         this.gender = 2;
@@ -83,5 +84,13 @@ public class UserData {
 
     public void setUpdated_at(Date updated_at) {
         this.updated_at = updated_at;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public User getUser() {
+        return user;
     }
 }

@@ -4,7 +4,6 @@ import java.util.Date;
 
 public class FileCommit {
     private String id;
-    private User authorId;
     private User visitorId;
     private File fid;
     private int level;
@@ -25,14 +24,6 @@ public class FileCommit {
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public User getAuthorId() {
-        return authorId;
-    }
-
-    public void setAuthorId(User authorId) {
-        this.authorId = authorId;
     }
 
     public User getVisitorId() {

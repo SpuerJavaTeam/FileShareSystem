@@ -12,7 +12,7 @@ public class SessionUtil {
     private static SessionFactory factory;
 
     static {
-        Configuration configuration = new org.hibernate.cfg.Configuration().configure("h.cfg.xml");
+        Configuration configuration = new Configuration().configure();
         ServiceRegistry serviceRegistry = new ServiceRegistryBuilder()
                 .applySettings(configuration.getProperties())
                 .buildServiceRegistry();

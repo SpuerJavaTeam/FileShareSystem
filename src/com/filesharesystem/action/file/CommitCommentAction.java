@@ -1,4 +1,4 @@
-package com.filesharesystem.action;
+package com.filesharesystem.action.file;
 
 import com.filesharesystem.models.User;
 import com.filesharesystem.models.File;

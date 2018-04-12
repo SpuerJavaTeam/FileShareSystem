@@ -4,7 +4,6 @@ import java.util.Date;
 
 public class FileData {
     private int id;
-    private User authorId;
     private User visitorId;
     private File fid;
     private int type;
@@ -25,14 +24,6 @@ public class FileData {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public User getAuthorId() {
-        return authorId;
-    }
-
-    public void setAuthorId(User authorId) {
-        this.authorId = authorId;
     }
 
     public User getVisitorId() {

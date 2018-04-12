@@ -6,6 +6,7 @@ public class File {
     private String fid;
     private String fileName;
     private String fileType;
+    private String path;
     private User uid;
     private int status;
     private int type;
@@ -52,6 +53,14 @@ public class File {
 
     public void setFileType(String fileType) {
         this.fileType = fileType;
+    }
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
     }
 
     public User getUid() {

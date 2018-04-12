@@ -22,11 +22,13 @@ public class Delete extends ActionSupport implements SessionAware{
     private Map<String, Object> session;
     private String fid;
     private String message;
+
     @Override
     public String execute() throws Exception {
         File file = (File) new FileDAOImpl().getObject(File.class, fid);
         List<FileData> fileData = new FileDataDAOImpl().getFileDateByFID(fid);
         List<FileCommit> fileCommit = new FileCommitDAOImpl().getFileCommitByFID(fid);
+
 //        删除文件扩展数据（浏览、收藏、下载）
         for (FileData one : fileData){
             new FileDataDAOImpl().delete(one);

@@ -15,6 +15,7 @@ import org.apache.struts2.interceptor.SessionAware;
 
 import java.util.Map;
 
+//用于用户添加收藏
 public class Favorites extends ActionSupport implements SessionAware{
     private Map<String, Object> session;
     private String fid;

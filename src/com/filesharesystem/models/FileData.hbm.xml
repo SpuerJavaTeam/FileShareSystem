@@ -7,8 +7,6 @@
         <id name="id" column="id" type="integer">
             <generator class="native"/>
         </id>
-
-        <!--TODO:authorid 和 fid 是否重复了？一般来说authorid和fid绑定，知道fid就知道authorid-->
         <many-to-one name="visitorId" column="visitorid"/>
         <many-to-one name="fid" column="fid"/>
         <property name="type" column="type" type="integer"/>

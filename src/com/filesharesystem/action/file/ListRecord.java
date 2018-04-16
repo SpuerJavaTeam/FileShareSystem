@@ -18,6 +18,7 @@ import org.apache.struts2.interceptor.SessionAware;
 import java.util.List;
 import java.util.Map;
 
+//用于列出用户的文件操作
 public class ListRecord extends ActionSupport implements SessionAware {
     private Map<String, Object> session;
     private String message;

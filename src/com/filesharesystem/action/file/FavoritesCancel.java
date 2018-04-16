@@ -20,6 +20,8 @@ import org.apache.struts2.interceptor.SessionAware;
 import java.util.List;
 import java.util.Map;
 
+
+//用于用户取消收藏
 public class FavoritesCancel extends ActionSupport implements SessionAware{
     private Map<String, Object> session;
     private String fid;

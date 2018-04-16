@@ -2,8 +2,10 @@ package com.filesharesystem.action;
 
 import com.filesharesystem.dao.UserDAO;
 import com.filesharesystem.dao.UserDataDAO;
+import com.filesharesystem.dao.impl.IPDAOImpl;
 import com.filesharesystem.dao.impl.UserDAOImpl;
 import com.filesharesystem.dao.impl.UserDataDAOImpl;
+import com.filesharesystem.models.IP;
 import com.filesharesystem.models.User;
 import com.filesharesystem.models.UserData;
 import com.filesharesystem.utils.DateUtil;
@@ -16,6 +18,7 @@ import org.apache.struts2.interceptor.SessionAware;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Map;
 
 /**
@@ -48,12 +51,16 @@ public class SignUpAction extends ActionSupport implements SessionAware {
         } else {
             User user = new User();
             user.setUsername(username);
-            //user.setUid(MD5Util.getUUID(username)); // 生成User主键
             user.setPassword(password);
             user.setEmail(email);
-            UserDataDAO dataDAO = new UserDataDAOImpl();
             userDAO.saveOrUpdate(user);
             session.put("user",user);
+
+            IP ip = new IP();
+            ip.setUid(new HashSet<User>(){{add(user);}});
+            // TODO: 18.4.16 获取ip
+            ip.setIpv4("127.0.0.1");
+            new IPDAOImpl().saveOrUpdate(ip);
             return Action.SUCCESS;
         }
 

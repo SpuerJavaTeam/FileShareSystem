@@ -5,5 +5,7 @@ package com.filesharesystem.action.file;
  *@create 2018-04-12 10:40
  */
 
+
+//用于用户下载文件的时候进行记录
 public class Download {
 }

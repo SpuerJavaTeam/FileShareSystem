@@ -1,10 +1,12 @@
 package com.filesharesystem.models;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 public class IP {
     private int id;
-    private User uid;
+    private Set<User> uid = new HashSet<>();
     private String ipv4;
     private Date created_at;
     private Date updated_at;
@@ -18,7 +20,6 @@ public class IP {
         this.updated_at = date;
     }
 
-
     public int getId() {
         return id;
     }
@@ -27,11 +28,11 @@ public class IP {
         this.id = id;
     }
 
-    public User getUid() {
+    public Set<User> getUid() {
         return uid;
     }
 
-    public void setUid(User uid) {
+    public void setUid(Set<User> uid) {
         this.uid = uid;
     }
 

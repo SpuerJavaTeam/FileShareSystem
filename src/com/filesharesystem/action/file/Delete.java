@@ -13,12 +13,14 @@ import com.filesharesystem.models.FileCommit;
 import com.filesharesystem.models.FileData;
 import com.opensymphony.xwork2.Action;
 import com.opensymphony.xwork2.ActionSupport;
+import com.opensymphony.xwork2.Validateable;
 import org.apache.struts2.interceptor.SessionAware;
 
 import java.util.List;
 import java.util.Map;
 
-public class Delete extends ActionSupport implements SessionAware{
+//用于用户删除文件
+public class Delete extends ActionSupport implements SessionAware, Validateable{
     private Map<String, Object> session;
     private String fid;
     private String message;
@@ -39,6 +41,7 @@ public class Delete extends ActionSupport implements SessionAware{
             new FileCommitDAOImpl().delete(one);
             System.out.println(one.getFid() + " 文件评分数据删除成功");
         }
+
         if (file != null){
             new FileDAOImpl().delete(file);
             System.out.println(file.getFileName() + " 删除成功");
@@ -48,6 +51,12 @@ public class Delete extends ActionSupport implements SessionAware{
             return Action.ERROR;
         }
         return Action.SUCCESS;
+    }
+
+
+    @Override
+    public void validate() {
+        super.validate();
     }
 
     @Override

@@ -15,20 +15,20 @@ public class CodeTest{
 
     public static void main(String[] args) {
         System.out.print("This is a test class");
-        User user = new UserDAOImpl().checkUser("laisicheng", "123456");
-        System.out.println(user.getUid());
+        User user = new UserDAOImpl().checkUser("laisicheng2", "123456");
+        System.out.println(user.getUid()+user.getUsername());
         IP ip = new IP();
-        Set<User> users = new HashSet<User>(){
-            {
-                add(user);
-            }
-        };
-        ip.setUid(users);
+        ip.setUid(user);
         ip.setIpv4("127.0.0.1");
         new IPDAOImpl().saveOrUpdate(ip);
         List<IP> ips =  new IPDAOImpl().uidList("127.0.0.1");
-        for(IP one :ips){
-            System.out.println(one.getUid());
+        for (IP one :ips) {
+            System.out.println(one.getUid().getUsername());
+        }
+
+        ips = new IPDAOImpl().getAll();
+        for (IP one :ips) {
+            System.out.println(one.getUid().getUsername());
         }
     }
 }

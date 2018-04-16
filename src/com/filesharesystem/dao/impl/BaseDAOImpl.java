@@ -1,11 +1,14 @@
 package com.filesharesystem.dao.impl;
 
 import com.filesharesystem.dao.BaseDAO;
+import com.filesharesystem.models.IP;
 import com.filesharesystem.utils.SessionUtil;
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.web.context.request.SessionScope;
 
+import java.util.List;
 import java.util.Set;
 
 public class BaseDAOImpl implements BaseDAO {
@@ -95,5 +98,7 @@ public class BaseDAOImpl implements BaseDAO {
         }
         return obj;
     }
+
+
 
 }

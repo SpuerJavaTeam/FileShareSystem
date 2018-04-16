@@ -6,7 +6,7 @@ import java.util.Set;
 
 public class IP {
     private int id;
-    private Set<User> uid = new HashSet<>();
+    private User uid;
     private String ipv4;
     private Date created_at;
     private Date updated_at;
@@ -28,12 +28,12 @@ public class IP {
         this.id = id;
     }
 
-    public Set<User> getUid() {
-        return uid;
+    public void setUid(User uid) {
+        this.uid = uid;
     }
 
-    public void setUid(Set<User> uid) {
-        this.uid = uid;
+    public User getUid() {
+        return uid;
     }
 
     public String getIpv4() {

@@ -12,4 +12,7 @@ public interface IPDAO extends BaseDAO {
 
 //    通过ip地址获取用户
     List<IP> uidList(String ip);
+
+//    获取所有的ip信息
+    List<IP> getAll();
 }

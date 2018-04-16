@@ -24,6 +24,7 @@ public class IPDAOImpl extends BaseDAOImpl implements IPDAO {
             transaction = session.beginTransaction();
             Criteria criteria = session.createCriteria(IP.class);
             criteria.add(Restrictions.eq("uid", uid));
+            criteria.createCriteria("uid");
             ipList = criteria.list();
             transaction.commit();
         } catch (Exception e) {
@@ -45,6 +46,7 @@ public class IPDAOImpl extends BaseDAOImpl implements IPDAO {
             transaction = session.beginTransaction();
             Criteria criteria = session.createCriteria(IP.class);
             criteria.add(Restrictions.eq("ipv4", ip));
+            criteria.createCriteria("uid");
             ipList = criteria.list();
             transaction.commit();
         } catch (Exception e) {
@@ -52,6 +54,28 @@ public class IPDAOImpl extends BaseDAOImpl implements IPDAO {
             transaction.rollback();
         } finally {
             if (session != null) session.close();
+        }
+        return ipList;
+    }
+
+    public List<IP> getAll() {
+        Session session = null;
+        Transaction transaction = null;
+        List<IP> ipList = null;
+        try {
+            session = SessionUtil.openSession();
+            transaction = session.beginTransaction();
+            Criteria criteria = session.createCriteria(IP.class);
+            criteria.createCriteria("uid");
+            ipList = criteria.list();
+            transaction.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            transaction.rollback();
+        } finally {
+            if (session != null) {
+                session.close();
+            }
         }
         return ipList;
     }

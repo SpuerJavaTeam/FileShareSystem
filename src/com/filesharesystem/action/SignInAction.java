@@ -42,7 +42,7 @@ public class SignInAction extends ActionSupport implements SessionAware {
         User user = dao.checkUser(username, password);
         if (user != null) {
             session.put("user", user);
-            ip.setUid(new HashSet<User>(){{add(user);}});
+            ip.setUid(user);
             // TODO: 18.4.16 获取ip
             ip.setIpv4("127.0.0.1");
             new IPDAOImpl().saveOrUpdate(ip);

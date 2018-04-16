@@ -57,7 +57,7 @@ public class SignUpAction extends ActionSupport implements SessionAware {
             session.put("user",user);
 
             IP ip = new IP();
-            ip.setUid(new HashSet<User>(){{add(user);}});
+            ip.setUid(user);
             // TODO: 18.4.16 获取ip
             ip.setIpv4("127.0.0.1");
             new IPDAOImpl().saveOrUpdate(ip);

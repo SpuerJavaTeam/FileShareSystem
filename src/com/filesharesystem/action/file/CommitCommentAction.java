@@ -20,7 +20,6 @@ import java.util.Map;
  * @see File,FileData,FileCommit
  */
 public class CommitCommentAction extends ActionSupport implements SessionAware {
-
     private static final long serialVersionUID = 1271467894101374431L;
     private Map<String, Object> session;
 
@@ -34,5 +33,9 @@ public class CommitCommentAction extends ActionSupport implements SessionAware {
     @Override
     public void setSession(Map<String, Object> session) {
         this.session = session;
+    }
+
+    public Map<String, Object> getSession() {
+        return session;
     }
 }

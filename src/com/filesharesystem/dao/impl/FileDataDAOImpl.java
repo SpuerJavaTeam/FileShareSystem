@@ -14,6 +14,7 @@ import java.util.List;
 
 public class FileDataDAOImpl extends BaseDAOImpl implements FileDataDAO {
     // BaseDAO默认方法即可
+    @Override
     public List<FileData> getFileDateByFID(String fid){
         Session session = null;
         Transaction transaction = null;
@@ -36,6 +37,7 @@ public class FileDataDAOImpl extends BaseDAOImpl implements FileDataDAO {
         return fileData;
     }
 
+    @Override
     public FileData getFavoriteFileDate(String fid, String uid){
         Session session = null;
         Transaction transaction = null;
@@ -57,5 +59,28 @@ public class FileDataDAOImpl extends BaseDAOImpl implements FileDataDAO {
             }
         }
         return fileData.get(0);
+    }
+
+    public List<FileData> getFileDateByUid(String uid){
+        Session session = null;
+        Transaction transaction = null;
+        List<FileData> fileDataList = null;
+        try {
+            session = SessionUtil.openSession();
+            transaction = session.beginTransaction();
+            Criteria criteria = session.createCriteria(FileData.class);
+            criteria.add(Restrictions.eq("uid", uid));
+            criteria.createCriteria("fid");
+            fileDataList = criteria.list();
+            transaction.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            transaction.rollback();
+        } finally {
+            if (session != null){
+                session.close();
+            }
+        }
+        return fileDataList;
     }
 }

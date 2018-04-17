@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.Map;
 
 //用于列出用户的文件操作
-public class ListRecord extends ActionSupport implements SessionAware {
+public class ListUserFiles extends ActionSupport implements SessionAware {
     private Map<String, Object> session;
     private String message;
     private List<File> files;
@@ -28,6 +28,7 @@ public class ListRecord extends ActionSupport implements SessionAware {
     @Override
     public String execute() throws Exception {
         User user = (User) session.get("user");
+        List<File> files;
         if( user == null) {
             message = "抱歉出了点问题,无法获取用户信息";
             return Action.ERROR;

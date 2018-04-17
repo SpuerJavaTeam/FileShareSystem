@@ -58,6 +58,7 @@ public class IPDAOImpl extends BaseDAOImpl implements IPDAO {
         return ipList;
     }
 
+    @Override
     public List<IP> getAll() {
         Session session = null;
         Transaction transaction = null;

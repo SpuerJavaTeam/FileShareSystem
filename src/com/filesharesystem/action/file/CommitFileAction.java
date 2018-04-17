@@ -31,7 +31,6 @@ public class CommitFileAction extends ActionSupport implements SessionAware {
     private User uid;
     private String fileName;
     private String fileType;
-    private User authorId;
     private User visitorId;
     private File fid;
 
@@ -90,14 +89,6 @@ public class CommitFileAction extends ActionSupport implements SessionAware {
 
     public void setFileType(String fileType) {
         this.fileType = fileType;
-    }
-
-    public User getAuthorId() {
-        return authorId;
-    }
-
-    public void setAuthorId(User authorId) {
-        this.authorId = authorId;
     }
 
     public User getVisitorId() {

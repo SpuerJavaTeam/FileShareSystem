@@ -1,48 +1,39 @@
 package com.filesharesystem.action.file;
 /*
- *文件取消收藏
+ *文件记录
  *@author gh
- *@create 2018-04-11 20:10
+ *@create 2018-04-12 10:42
  */
 
 import com.filesharesystem.dao.FileDataDAO;
-import com.filesharesystem.dao.impl.FileCommitDAOImpl;
 import com.filesharesystem.dao.impl.FileDAOImpl;
-import com.filesharesystem.dao.impl.FileDataDAOImpl;
 import com.filesharesystem.models.File;
-import com.filesharesystem.models.FileCommit;
 import com.filesharesystem.models.FileData;
 import com.filesharesystem.models.User;
 import com.opensymphony.xwork2.Action;
+import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.interceptor.SessionAware;
 
 import java.util.List;
 import java.util.Map;
 
-
-//用于用户取消收藏
-public class FavoritesCancel extends ActionSupport implements SessionAware{
+//用于列出用户的文件操作
+public class ListUserFilesAction extends ActionSupport implements SessionAware {
     private Map<String, Object> session;
-    private String fid;
     private String message;
+    private List<File> files;
+
 
     @Override
     public String execute() throws Exception {
         User user = (User) session.get("user");
-        // TODO: 18.4.11 通过fid会获取到所有含有这个fid的文件收藏列表
-        if (user == null) {
-            message = "出了点问题，您可能没有权限取消收藏";
+        List<File> files;
+        if( user == null) {
+            message = "抱歉出了点问题,无法获取用户信息";
             return Action.ERROR;
         }
-
-        FileData fileData = new FileDataDAOImpl().getFavoriteFileDate(fid, user.getUid());
-        if (fileData == null) {
-            message = "出了点问题，无法获取文件信息";
-            return Action.ERROR;
-        }
-
-        new FileDataDAOImpl().delete(fileData);
+        files = new FileDAOImpl().getFileById(user.getUid());
         return Action.SUCCESS;
     }
 
@@ -51,19 +42,19 @@ public class FavoritesCancel extends ActionSupport implements SessionAware{
         this.session = session;
     }
 
-    public void setFid(String fid) {
-        this.fid = fid;
-    }
-
-    public String getFid() {
-        return fid;
-    }
-
     public void setMessage(String message) {
         this.message = message;
     }
 
     public String getMessage() {
         return message;
+    }
+
+    public void setFiles(List<File> files) {
+        this.files = files;
+    }
+
+    public List<File> getFiles() {
+        return files;
     }
 }

@@ -10,4 +10,6 @@ public interface FileDAO extends BaseDAO {
 
 //    通过用户ID获取文件列表
     List<File> getFileById(String uid);
+
+    File getFileByFid(String fid);
 }

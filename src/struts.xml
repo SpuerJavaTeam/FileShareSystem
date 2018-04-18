@@ -20,4 +20,10 @@
     </package>
     <package name="userOperation" namespace="/user" extends="struts-defaults">
     </package>
+    <package name="file" namespace="file" extends="struts-default">
+        <action name="CommitFile" class="com.filesharesystem.action.file.CommitFileAction">
+            <result name="success">./</result>
+            <result name="input">./</result>
+        </action>
+    </package>
 </struts>

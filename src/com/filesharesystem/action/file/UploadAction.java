@@ -5,5 +5,5 @@ package com.filesharesystem.action.file;
  *@create 2018-04-16 08:50
  */
 
-public class Upload {
+public class UploadAction {
 }

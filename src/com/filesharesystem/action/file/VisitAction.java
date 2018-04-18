@@ -17,7 +17,7 @@ import java.util.Map;
 
 // TODO: 18.4.12 尽可能尝试通过拦截器方式实现
 // 用于实现用户的浏览记录
-public class Visit extends ActionSupport implements SessionAware {
+public class VisitAction extends ActionSupport implements SessionAware {
     private Map<String, Object> session;
     private String fid;
     private String message;

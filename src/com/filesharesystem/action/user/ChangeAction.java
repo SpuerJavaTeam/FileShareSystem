@@ -13,7 +13,7 @@ import org.apache.struts2.interceptor.SessionAware;
 
 import java.util.Map;
 
-public class Change extends ActionSupport implements SessionAware{
+public class ChangeAction extends ActionSupport implements SessionAware{
     private Map<String, Object> session;
     private String message;
     private String password;

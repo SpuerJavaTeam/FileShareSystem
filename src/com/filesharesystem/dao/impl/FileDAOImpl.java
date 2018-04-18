@@ -58,4 +58,26 @@ public class FileDAOImpl extends BaseDAOImpl implements FileDAO {
         }
         return files;
     }
+
+    public File getFileByFid(String fid){
+        Session session = null;
+        Transaction transaction = null;
+        List<File> fileList = null;
+        try {
+            session = SessionUtil.openSession();
+            transaction = session.beginTransaction();
+            Criteria criteria = session.createCriteria(File.class);
+            criteria.add(Restrictions.eq("fid",fid));
+            fileList = criteria.list();
+            transaction.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            transaction.rollback();
+        } finally {
+            if (session != null) {
+                session.close();
+            }
+        }
+        return fileList.get(0);
+    }
 }

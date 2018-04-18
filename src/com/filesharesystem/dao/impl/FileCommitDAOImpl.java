@@ -39,4 +39,27 @@ public class FileCommitDAOImpl extends BaseDAOImpl implements FileCommitDAO{
         }
         return fileCommit;
     }
+
+    public FileCommit getFileCommit(String fid, String uid){
+        Session session = null;
+        Transaction transaction = null;
+        List<FileCommit> fileCommitList = null;
+        try {
+            session = SessionUtil.openSession();
+            transaction = session.beginTransaction();
+            Criteria criteria = session.createCriteria(FileCommit.class);
+            criteria.add(Restrictions.eq("fid",fid));
+            criteria.add(Restrictions.eq("visitorid",uid));
+            fileCommitList = criteria.list();
+            transaction.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            transaction.rollback();
+        } finally {
+            if (session != null) {
+                session.close();
+            }
+        }
+        return fileCommitList.get(0);
+    }
 }

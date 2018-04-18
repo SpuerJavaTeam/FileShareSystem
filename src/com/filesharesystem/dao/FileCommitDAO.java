@@ -10,5 +10,8 @@ import com.filesharesystem.models.FileCommit;
 import java.util.List;
 
 public interface FileCommitDAO {
+
     List<FileCommit> getFileCommitByFID(String fid);
+
+    FileCommit getFileCommit(String fid, String uid);
 }

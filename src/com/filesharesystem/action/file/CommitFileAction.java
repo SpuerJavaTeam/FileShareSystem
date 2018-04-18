@@ -2,9 +2,11 @@ package com.filesharesystem.action.file;
 
 import com.filesharesystem.dao.FileDAO;
 import com.filesharesystem.dao.FileDataDAO;
+import com.filesharesystem.dao.impl.FileCommitDAOImpl;
 import com.filesharesystem.dao.impl.FileDAOImpl;
 import com.filesharesystem.dao.impl.FileDataDAOImpl;
 import com.filesharesystem.models.File;
+import com.filesharesystem.models.FileCommit;
 import com.filesharesystem.models.FileData;
 import com.filesharesystem.models.User;
 import com.opensymphony.xwork2.Action;
@@ -27,84 +29,56 @@ public class CommitFileAction extends ActionSupport implements SessionAware {
 
     private static final long serialVersionUID = 8698717742693703294L;
     private Map<String, Object> session;
-
-    private User uid;
-    private String fileName;
-    private String fileType;
-    private User visitorId;
-    private File fid;
+    private String fid;
+    private int level;
+    private String commit;
 
     @Override
     public String execute() {
         User user = (User) session.get("user");
-
-        File file = new File();
-        file.setFileName(fileName);
-        file.setUid(user);
-        file.setFileType(fileType);
-
-        FileData fileData = new FileData();
-        fileData.setVisitorId(user);
-        fileData.setFid(file);
-
-        FileDAO fileDAO = new FileDAOImpl();
-        FileDataDAO dataDAO = new FileDataDAOImpl();
-        if (file != null && user.getStatus() != 3) {
-            fileDAO.saveOrUpdate(file);
-            dataDAO.saveOrUpdate(fileData);
-            return Action.SUCCESS;
-        } else {
-            addActionError("文件为空/用户已被禁止活动");
-            return Action.ERROR;
+        FileCommit fileCommit = new FileCommitDAOImpl().getFileCommit(fid, user.getUid());
+        File file = new FileDAOImpl().getFileByFid(fid);
+        if (file == null) {
+            addActionError("文件信息获取失败");
         }
+        fileCommit.setFid(file);
+        fileCommit.setVisitorId(user);
+        fileCommit.setLevel(level);
+        fileCommit.setCommit(commit);
+        new FileCommitDAOImpl().saveOrUpdate(fileCommit);
+        return Action.SUCCESS;
     }
 
     public static long getSerialVersionUID() {
         return serialVersionUID;
     }
 
-    public Map<String, Object> getSession() {
-        return session;
+    public void setFid(String fid) {
+        this.fid = fid;
     }
 
-    public User getUid() {
-        return uid;
-    }
-
-    public void setUid(User uid) {
-        this.uid = uid;
-    }
-
-    public String getFileName() {
-        return fileName;
-    }
-
-    public void setFileName(String fileName) {
-        this.fileName = fileName;
-    }
-
-    public String getFileType() {
-        return fileType;
-    }
-
-    public void setFileType(String fileType) {
-        this.fileType = fileType;
-    }
-
-    public User getVisitorId() {
-        return visitorId;
-    }
-
-    public void setVisitorId(User visitorId) {
-        this.visitorId = visitorId;
-    }
-
-    public File getFid() {
+    public String getFid() {
         return fid;
     }
 
-    public void setFid(File fid) {
-        this.fid = fid;
+    public void setCommit(String commit) {
+        this.commit = commit;
+    }
+
+    public String getCommit() {
+        return commit;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public Map<String, Object> getSession() {
+        return session;
     }
 
     @Override

@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.Map;
 
 //用于用户删除文件
-public class Delete extends ActionSupport implements SessionAware, Validateable{
+public class DeleteAction extends ActionSupport implements SessionAware, Validateable{
     private Map<String, Object> session;
     private String fid;
     private String message;

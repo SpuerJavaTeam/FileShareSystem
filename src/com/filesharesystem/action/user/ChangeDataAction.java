@@ -10,7 +10,7 @@ import org.apache.struts2.interceptor.SessionAware;
 
 import java.util.Map;
 
-public class ChangeData extends ActionSupport implements SessionAware{
+public class ChangeDataAction extends ActionSupport implements SessionAware{
     private Map<String, Object> session;
 
 

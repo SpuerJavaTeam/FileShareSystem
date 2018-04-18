@@ -6,8 +6,22 @@
 
 <struts>
     <constant name="struts.enable.DynamicMethodInvocation" value="true"/>
+    <!--全局拦截-->
+    <package name="Interceptor" extends="struts-default">
+        <interceptors>
+            <interceptor name="singupInter" class="com.filesharesystem.action.SignupInterceptor"/>
+            <interceptor-stack name="interceptor-stack">
+                <interceptor-ref name="defaultStack"/>
+                <interceptor-ref name="singupInter"/>
+            </interceptor-stack>
+        </interceptors>
+        <default-interceptor-ref name="interceptor-stack"/>
+        <global-results>
+            <result name="login">./index.jsp</result>
+        </global-results>
+    </package>
     <!--登录部分-->
-    <package name="login" namespace="/login" extends="struts-default">
+    <package name="login" namespace="/login" extends="Interceptor">
         <action name="signIn" class="com.filesharesystem.action.SignInAction">
             <result name="ADMIN">./admin/index.jsp</result>
             <result name="USER">./user/index.jsp</result>

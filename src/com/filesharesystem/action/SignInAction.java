@@ -47,9 +47,9 @@ public class SignInAction extends ActionSupport implements SessionAware {
             ip.setIpv4("127.0.0.1");
             new IPDAOImpl().saveOrUpdate(ip);
             if ( user.getType() == 0 ) {
-                return "ADMIN";
+                return "admin";
             } else {
-                return "USER";
+                return "user";
             }
         } else {
             addActionError("用户未登陆");

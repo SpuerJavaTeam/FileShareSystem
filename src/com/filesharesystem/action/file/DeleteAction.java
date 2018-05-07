@@ -13,14 +13,13 @@ import com.filesharesystem.models.FileCommit;
 import com.filesharesystem.models.FileData;
 import com.opensymphony.xwork2.Action;
 import com.opensymphony.xwork2.ActionSupport;
-import com.opensymphony.xwork2.Validateable;
 import org.apache.struts2.interceptor.SessionAware;
 
 import java.util.List;
 import java.util.Map;
 
 //用于用户删除文件
-public class DeleteAction extends ActionSupport implements SessionAware, Validateable{
+public class DeleteAction extends ActionSupport implements SessionAware{
     private Map<String, Object> session;
     private String fid;
     private String message;

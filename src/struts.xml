@@ -6,6 +6,7 @@
 
 <struts>
     <constant name="struts.enable.DynamicMethodInvocation" value="true"/>
+    <constant name="struts.action.excludePattern" value="/static/.*?" /><!-- default locale -->
     <!--全局拦截-->
     <package name="Interceptor" extends="struts-default">
         <interceptors>
@@ -17,7 +18,7 @@
         </interceptors>
         <default-interceptor-ref name="interceptor-stack"/>
         <global-results>
-            <result name="login">./index.jsp</result>
+            <result name="login">./login.jsp</result>
         </global-results>
     </package>
     <!--登录部分-->
@@ -25,16 +26,15 @@
         <action name="signIn" class="com.filesharesystem.action.SignInAction">
             <result name="ADMIN">./admin/index.jsp</result>
             <result name="USER">./user/index.jsp</result>
-            <result name="input">./login.jsp</result>
         </action>
         <action name="signUp" class="com.filesharesystem.action.SignUpAction">
             <result name="success">./OK.jsp</result>
-            <result name="error">./index.jsp</result>
+            <result name="error">./login.jsp</result>
         </action>
     </package>
-    <package name="userOperation" namespace="/user" extends="struts-defaults">
+    <package name="userOperation" namespace="/user" extends="struts-default">
     </package>
-    <package name="file" namespace="file" extends="struts-default">
+    <package name="file" namespace="/file" extends="struts-default">
         <action name="CommitFile" class="com.filesharesystem.action.file.CommitFileAction">
             <result name="success">./</result>
             <result name="input">./</result>

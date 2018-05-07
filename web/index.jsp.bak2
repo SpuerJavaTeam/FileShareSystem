@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
+<head>
+    <title>资源共享系统</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/css/bootstrap.min.css"/>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">资源共享系统</a>
+        </div>
+        <div>
+            <ul class="nav navbar-nav navbar-left">
+                <li class="active"><a href="#">上传文件</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="active"><a href="login.jsp">登录</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+
+
+
+
+
+
+    <div class="pull-right">
+        <a href="/.xml"><i class="fa fa-rss-square"></i></a>
+    </div>
+
+    <ol class="breadcrumb">
+        <li><a href="/">首页</a></li>
+    </ol>
+
+    <table class="table table-hover table-condensed post-index">
+        <thead>
+        <tr>
+            <th class="hidden-xs hidden-sm">发布者</th>
+            <th>标题</th>
+            <th>DL</th>
+            <th>大小</th>
+            <th>上传用户</th>
+        </tr>
+        </thead>
+        <tr>
+
+        </tr>
+    </table>
+
+</div>
+
+<div class="footer">
+    <div class="container">
+        <p class="text-muted">Copyright 2014-2017 SpuerJavaTeam .</p>
+    </div>
+</div>
+
+</body>
+</html>

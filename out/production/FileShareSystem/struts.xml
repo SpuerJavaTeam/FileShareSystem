@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+    <constant name="struts.enable.DynamicMethodInvocation" value="true"/>
+    <constant name="struts.action.excludePattern" value="/static/.*?" /><!-- default locale -->
+    <!--全局拦截-->
+    <package name="Interceptor" extends="struts-default">
+        <interceptors>
+            <interceptor name="singupInter" class="com.filesharesystem.action.SignupInterceptor"/>
+            <interceptor-stack name="interceptor-stack">
+                <interceptor-ref name="defaultStack"/>
+                <interceptor-ref name="singupInter"/>
+            </interceptor-stack>
+        </interceptors>
+        <default-interceptor-ref name="interceptor-stack"/>
+        <global-results>
+            <result name="login">./login.jsp</result>
+        </global-results>
+    </package>
+    <!--登录部分-->
+    <package name="login" namespace="/login" extends="Interceptor">
+        <action name="signIn" class="com.filesharesystem.action.SignInAction">
+            <result name="ADMIN">./admin/index.jsp</result>
+            <result name="USER">./user/index.jsp</result>
+        </action>
+        <action name="signUp" class="com.filesharesystem.action.SignUpAction">
+            <result name="success">./OK.jsp</result>
+            <result name="error">./login.jsp</result>
+        </action>
+    </package>
+    <package name="userOperation" namespace="/user" extends="struts-default">
+    </package>
+    <package name="file" namespace="/file" extends="struts-default">
+        <action name="CommitFile" class="com.filesharesystem.action.file.CommitFileAction">
+            <result name="success">./</result>
+            <result name="input">./</result>
+        </action>
+    </package>
+</struts>

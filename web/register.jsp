@@ -36,7 +36,7 @@
           <div class="card bg-gradient" style="border-radius:25px;">
             <div class="card-body p-5">
               <h2 class="pb-3">注册</h2>
-              <form action="https://formspree.io/YOUREMAILHERE">
+              <form action="signUp.action" method="post">
                 <div class="form-group">
                   <label>邮箱</label>
                   <input class="form-control" placeholder="请输入邮箱"> </div>

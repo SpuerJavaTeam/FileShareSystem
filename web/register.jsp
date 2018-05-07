@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
-  <link rel="stylesheet" href="static/css/theme.css" type="text/css">
+  <link rel="stylesheet" href="<%=request.getContextPath()%>static/css/theme.css" type="text/css">
 </head>
 
 <body>
@@ -28,24 +28,26 @@
   <div class="py-5" style="background-image:url('static/pic/bg.jpg');background-repeat:no-repeat;">
     <div class="container">
       <div class="row">
+
         <div class="align-self-center col-md-6 text-white">
           <h1 class="text-center text-md-left display-3">文件共享系统</h1>
           <p class="lead">共享——互联网时代下的价值体现</p>
         </div>
+
         <div class="col-md-6">
           <div class="card bg-gradient" style="border-radius:25px;">
             <div class="card-body p-5">
               <h2 class="pb-3">注册</h2>
-              <form action="https://formspree.io/YOUREMAILHERE">
+              <form action="/login/signUp.action" method="post">
                 <div class="form-group">
                   <label>邮箱</label>
-                  <input class="form-control" placeholder="email"> </div>
+                  <input class="form-control" name="email" placeholder="email"> </div>
                 <div class="form-group">
                   <label>用户名</label>
-                  <input class="form-control" placeholder="username"> </div>
+                  <input class="form-control" name="username" placeholder="username"> </div>
                 <div class="form-group">
                   <label>密码</label>
-                  <input type="password" class="form-control" placeholder="password"> </div>
+                  <input type="password" name="password" class="form-control" placeholder="password"> </div>
                 <div class="form-group">
                   <label>确认密码</label>
                   <input type="password" class="form-control" placeholder="password"> </div>
@@ -54,6 +56,7 @@
             </div>
           </div>
         </div>
+
       </div>
     </div>
   </div>

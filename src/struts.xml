@@ -22,16 +22,19 @@
         </global-results>
     </package>
     <!--登录部分-->
-    <package name="login" namespace="/login" extends="Interceptor">
+    <package name="login" namespace="/login" extends="struts-default">
         <action name="signIn" class="com.filesharesystem.action.SignInAction">
-            <result name="ADMIN">./admin/index.jsp</result>
-            <result name="USER">./user/index.jsp</result>
+            <result name="admin">/admin/index.jsp</result>
+            <result name="user">/user/index.jsp</result>
         </action>
+
         <action name="signUp" class="com.filesharesystem.action.SignUpAction">
-            <result name="success">./OK.jsp</result>
-            <result name="error">./login.jsp</result>
+            <result name="success">/OK.jsp</result>
+            <result name="error">/register.jsp</result>
         </action>
+
     </package>
+
     <package name="userOperation" namespace="/user" extends="struts-default">
     </package>
     <package name="file" namespace="/file" extends="struts-default">

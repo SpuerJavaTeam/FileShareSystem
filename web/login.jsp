@@ -5,10 +5,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
-  <link rel="stylesheet" href="static/css/theme.css" type="text/css">
+  <link rel="stylesheet" href="<%=request.getContextPath()%>static/css/theme.css" type="text/css">
 </head>
 
 <body>
+  <%--header--%>
   <nav class="navbar navbar-expand-md navbar-dark bg-gradient">
     <div class="container">
       <a class="navbar-brand" href="index.jsp">
@@ -24,6 +25,8 @@
       </div>
     </div>
   </nav>
+
+  <%--背景--%>
   <div class="py-5" style="background-image:url('static/pic/bg.jpg');background-repeat:no-repeat;">
     <div class="container">
       <div class="row">
@@ -31,25 +34,29 @@
           <h1 class="text-center text-md-left display-3">文件共享系统</h1>
           <p class="lead">共享——互联网时代下的价值体现</p>
         </div>
+
+        <%--登录模块--%>
         <div class="col-md-6">
           <div class="card bg-gradient" style="border-radius:25px;">
             <div class="card-body p-5">
               <h2 class="pb-3">登陆</h2>
-              <form action="https://formspree.io/YOUREMAILHERE">
+              <form name="loginFrom" action="/login/signIn.action" method="post">
                 <div class="form-group">
                   <label>用户名</label>
-                  <input class="form-control" placeholder="username"> </div>
+                  <input class="form-control" name="username" placeholder="username"> </div>
                 <div class="form-group">
                   <label>密码</label>
-                  <input type="password" class="form-control" placeholder="password"> </div>
+                  <input type="password" name="password" class="form-control" placeholder="password"> </div>
                 <button type="submit" class="btn mt-2 btn-outline-dark">登陆</button>
               </form>
             </div>
           </div>
         </div>
+
       </div>
     </div>
   </div>
+  <%--footer--%>
   <div class="bg-dark text-white py-2">
     <div class="container">
       <div class="row">

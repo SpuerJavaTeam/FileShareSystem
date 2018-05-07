@@ -35,13 +35,18 @@
           <div class="card bg-gradient" style="border-radius:25px;">
             <div class="card-body p-5">
               <h2 class="pb-3">登陆</h2>
-              <form action="https://formspree.io/YOUREMAILHERE">
+              <form action="signIn.action">
                 <div class="form-group">
                   <label>用户名</label>
-                  <input class="form-control" placeholder="username"> </div>
+                  <input class="form-control" type="text" name="username" placeholder="请输入用户名"> </div>
                 <div class="form-group">
                   <label>密码</label>
-                  <input type="password" class="form-control" placeholder="password"> </div>
+                  <input class="form-control" type="password" name="password" placeholder="请输入密码"> </div>
+                <div class="form-group">
+                  <label>
+                    <img style="border-radius: 5px;" src="createImageAction.action" onclick="this.src='createImageAction.action?'+ Math.random()" title="点击图片刷新验证码"/>
+                  </label>
+                  <input class="form-control" type="text" name="verify" placeholder="请输入验证码"> </div>
                 <button type="submit" class="btn mt-2 btn-outline-dark">登陆</button>
               </form>
             </div>

@@ -100,6 +100,7 @@
       <root url="jar://$PROJECT_DIR$/lib/spring-websocket-4.3.14.RELEASE.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/spring-ws.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/struts2-core.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/servlet-api.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

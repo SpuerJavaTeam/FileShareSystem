@@ -7,6 +7,7 @@ import com.filesharesystem.models.IP;
 import com.filesharesystem.models.User;
 import com.opensymphony.xwork2.Action;
 import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.SessionAware;
 
 import java.util.HashSet;
@@ -25,26 +26,30 @@ public class SignInAction extends ActionSupport implements SessionAware {
     private UserDAO dao = new UserDAOImpl();
     private String username;
     private String password;
+    private String verify;
     private Map<String, Object> session;
 
-    @Override
-    public void validate() {
+    public String execute() {
+        IP ip = new IP();
+        String ipAddress = ServletActionContext.getRequest().getRemoteAddr();
+        String checkCode = (String) session.get("checkCode");
+        System.out.println("获取验证码"+checkCode);
+        System.out.println("IP地址"+ipAddress);
         if(this.username == null || this.username.equals("") || this.username.trim().equals("")){
             this.addFieldError("username", "用户名不能为空");
         }
         if(this.password == null || this.password.equals("") || this.password.trim().equals("")){
             this.addFieldError("password","用户密码不能为空");
         }
-    }
-
-    public String execute() {
-        IP ip = new IP();
+        if(!verify.equals(checkCode)){
+            addActionError("验证码错误");
+        }
         User user = dao.checkUser(username, password);
         if (user != null) {
             session.put("user", user);
+            System.out.println("用户名"+user.getUsername());
             ip.setUid(user);
-            // TODO: 18.4.16 获取ip
-            ip.setIpv4("127.0.0.1");
+            ip.setIpv4(ipAddress);
             new IPDAOImpl().saveOrUpdate(ip);
             if ( user.getType() == 0 ) {
                 return "admin";
@@ -52,14 +57,18 @@ public class SignInAction extends ActionSupport implements SessionAware {
                 return "user";
             }
         } else {
-            addActionError("用户未登陆");
-            return INPUT;
+            addActionError("用户鉴权失败");
+            return Action.ERROR;
         }
     }
 
     @Override
     public void setSession(Map<String, Object> session) {
         this.session = session;
+    }
+
+    public Map<String, Object> getSession() {
+        return session;
     }
 
     public static long getSerialVersionUID() {
@@ -78,20 +87,23 @@ public class SignInAction extends ActionSupport implements SessionAware {
         this.password = password;
     }
 
-    public String getUsername() {
-        return username;
+    public String getPassword() {
+        return password;
     }
 
     public void setUsername(String username) {
         this.username = username;
     }
 
-    public String getPassword() {
-        return password;
+    public String getUsername() {
+        return username;
     }
 
-    public Map<String, Object> getSession() {
-        return session;
+    public void setVerify(String verify) {
+        this.verify = verify;
     }
 
+    public String getVerify() {
+        return verify;
+    }
 }

@@ -39,16 +39,23 @@
               <form action="https://formspree.io/YOUREMAILHERE">
                 <div class="form-group">
                   <label>邮箱</label>
-                  <input class="form-control" placeholder="email"> </div>
+                  <input class="form-control" placeholder="请输入邮箱"> </div>
                 <div class="form-group">
                   <label>用户名</label>
-                  <input class="form-control" placeholder="username"> </div>
+                  <input class="form-control" placeholder="请输入用户名"> </div>
                 <div class="form-group">
                   <label>密码</label>
-                  <input type="password" class="form-control" placeholder="password"> </div>
+                  <input type="password" class="form-control" placeholder="请输入密码"> </div>
                 <div class="form-group">
                   <label>确认密码</label>
-                  <input type="password" class="form-control" placeholder="password"> </div>
+                  <input type="password" class="form-control" placeholder="请确认密码">
+                </div>
+                <div class="form-group">
+                  <label>
+                      <img style="border-radius: 5px;" src="createImageAction.action" onclick="this.src='createImageAction.action?'+ Math.random()" title="点击图片刷新验证码"/>
+                  </label>
+                  <input type="password" class="form-control" placeholder="请输入验证码">
+                </div>
                 <button type="submit" class="btn mt-2 btn-outline-dark">注册</button>
               </form>
             </div>

@@ -99,7 +99,7 @@
               </a>
             </li>
             <li class="page-item">
-              <a class="page-link" href="#">1</a>
+              <a class="page-link" href="./user/index.jsp">1</a>
             </li>
             <li class="page-item">
               <a class="page-link" href="#">2</a>

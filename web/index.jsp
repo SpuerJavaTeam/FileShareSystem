@@ -1,3 +1,4 @@
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
@@ -6,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
-  <link rel="stylesheet" href="static/css/theme.css" type="text/css">
+  <link rel="stylesheet" href="<%=request.getContextPath()%>/static/css/theme.css" type="text/css">
 </head>
 
 <body>
@@ -43,30 +44,22 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>共享系统.pdf</td>
-                <td>2018-05-01 10:21:02</td>
-                <td>Otto</td>
-                <td>
-                  <a href="#">下载</a>
-                </td>
-              </tr>
-              <tr>
-                <td>共享系统.pdf</td>
-                <td>2018-05-01 10:21:03</td>
-                <td>Thornton</td>
-                <td>
-                  <a href="#">下载</a>
-                </td>
-              </tr>
-              <tr>
-                <td>共享系统.pdf</td>
-                <td>2018-05-01 10:21:03</td>
-                <td>the Bird</td>
-                <td>
-                  <a href="#">下载</a>
-                </td>
-              </tr>
+              <s:iterator value="list">
+                <tr>
+                  <td>
+                    <s:property value="filename"/>
+                  </td>
+                  <td>
+                    <s:property value="created_at"/>
+                  </td>
+                  <td>
+                    <s:property value="uid"/>
+                  </td>
+                  <td>
+                    <s:property value="path"></s:property>
+                  </td>
+                </tr>
+              </s:iterator>
             </tbody>
           </table>
         </div>

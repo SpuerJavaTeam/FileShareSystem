@@ -32,7 +32,7 @@ public class SignInAction extends ActionSupport implements SessionAware {
     public String execute() {
         IP ip = new IP();
         String ipAddress = ServletActionContext.getRequest().getRemoteAddr();
-        String checkCode = (String) session.get("checkCode");
+        String  checkCode = (String) session.get("checkCode");
         System.out.println("获取验证码"+checkCode);
         System.out.println("IP地址"+ipAddress);
         if(this.username == null || this.username.equals("") || this.username.trim().equals("")){
@@ -47,6 +47,8 @@ public class SignInAction extends ActionSupport implements SessionAware {
         User user = dao.checkUser(username, password);
         if (user != null) {
             session.put("user", user);
+            session.put ( "type",user.getType () );
+            session.put ( "username",username );
             System.out.println("用户名"+user.getUsername());
             ip.setUid(user);
             ip.setIpv4(ipAddress);

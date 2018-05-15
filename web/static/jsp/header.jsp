@@ -6,6 +6,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<style type="text/css">
+</style>
 <nav class="navbar navbar-expand-md navbar-dark bg-gradient">
     <div class="container">
         <a class="navbar-brand" href="index.jsp">

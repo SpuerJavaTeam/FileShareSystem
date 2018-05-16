@@ -1,13 +1,16 @@
+/*
+ *拉取文件信息
+ *@author Nikoace
+ *@create 2
+ */
 package com.filesharesystem.action.file;
 
-import com.filesharesystem.dao.FileDAO;
 import com.filesharesystem.dao.impl.FileDAOImpl;
 import com.filesharesystem.models.File;
 import com.filesharesystem.models.User;
 import com.opensymphony.xwork2.Action;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
-import org.apache.struts2.interceptor.SessionAware;
 
 import java.util.List;
 
@@ -16,6 +19,15 @@ public class GetFileAction extends ActionSupport
 
     private static final long serialVersionUID = 8698717426937032941L;
     private List<File> files;
+    private User user;
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     public List <File> getFiles() {
         return files;
@@ -29,6 +41,8 @@ public class GetFileAction extends ActionSupport
     public String execute() throws Exception {
         List<File> files;
         files = new FileDAOImpl ().getFiles ();
+        int countfiles = files.size ();
+        ActionContext.getContext ().put ( "count",countfiles );
         ActionContext.getContext ().put ( "list",files );
         return Action.SUCCESS;
     }

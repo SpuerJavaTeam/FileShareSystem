@@ -29,7 +29,7 @@ public class ListUserFilesAction extends ActionSupport implements SessionAware {
     public String execute() throws Exception {
         User user = (User) session.get("user");
         List<File> files;
-        if( user == null) {
+         if( user == null) {
             message = "抱歉出了点问题,无法获取用户信息";
             return Action.ERROR;
         }

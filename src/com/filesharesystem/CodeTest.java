@@ -15,7 +15,7 @@ public class CodeTest{
 
     public static void main(String[] args) {
         System.out.print("This is a test class");
-        User user = new UserDAOImpl().checkUser("laisicheng2", "123456");
+        User user = new UserDAOImpl().checkUser("testcase", "123456");
         System.out.println(user.getUid()+user.getUsername());
         IP ip = new IP();
         ip.setUid(user);

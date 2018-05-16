@@ -8,6 +8,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
   <link rel="stylesheet" href="<%=request.getContextPath()%>/static/css/theme.css" type="text/css">
+  <script type="text/javascript">
+
+  </script>
 </head>
 
 <body>
@@ -25,7 +28,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <p class="">共享文件数：67 贡献者：6</p>
+          <p class="">共享文件数：<s:property value="count"/> 贡献者：6</p>
         </div>
       </div>
     </div>
@@ -34,7 +37,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <table class="table">
+          <table class="table" id="filetable">
             <thead>
               <tr>
                 <th>文件名</th>
@@ -47,16 +50,16 @@
               <s:iterator value="list">
                 <tr>
                   <td>
-                    <s:property value="filename"/>
+                    <s:property value="fileName"/>
                   </td>
                   <td>
                     <s:property value="created_at"/>
                   </td>
                   <td>
-                    <s:property value="uid"/>
+                    <s:property value="uid.username"/>
                   </td>
                   <td>
-                    <s:property value="path"></s:property>
+                    <a href="<s:property value="path"/>"><i class="fa d-inline fa-download"></i> </a>
                   </td>
                 </tr>
               </s:iterator>

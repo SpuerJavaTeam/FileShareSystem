@@ -7,6 +7,9 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="s" uri="/struts-tags"%>
+<%
+
+%>
 <html>
 <head>
     <title></title>
@@ -26,9 +29,9 @@
     <div class="row">
         <div class="col-lg-5">
             <ul class="list-group">
-                <li class="list-group-item"><a href="">上传文件</a></li>
-                <li class="list-group-item"><a href="">修改文件信息</a></li>
-                <li class="list-group-item"><a href="">修改用户信息</a></li>
+                <li class="list-group-item"><a href="#">上传文件</a></li>
+                <li class="list-group-item"><a href="#">修改文件信息</a></li>
+                <li class="list-group-item"><a href="#">修改用户信息</a></li>
                 <li class="list-group-item"><a href="<%session.invalidate();%>">退出登录</a></li>
             </ul>
         </div>

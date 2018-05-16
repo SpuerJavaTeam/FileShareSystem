@@ -6,6 +6,7 @@ import com.filesharesystem.dao.impl.UserDAOImpl;
 import com.filesharesystem.models.IP;
 import com.filesharesystem.models.User;
 import com.opensymphony.xwork2.Action;
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.SessionAware;
@@ -46,9 +47,8 @@ public class SignInAction extends ActionSupport implements SessionAware {
         }
         User user = dao.checkUser(username, password);
         if (user != null) {
-            session.put("user", user);
-            session.put ( "type",user.getType () );
-            session.put ( "username",username );
+            session.put ( "user",user );
+            ActionContext.getContext ().setSession ( session );
             System.out.println("用户名"+user.getUsername());
             ip.setUid(user);
             ip.setIpv4(ipAddress);

@@ -4,13 +4,12 @@
         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
     <session-factory>
-        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-
-        <!-- 配置数据库方言dialect -->
-        <property name="connection.url">jdbc:mysql://localhost/filesharesystem</property>
-        <property name="dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property>
-        <property name="connection.username">username</property>
+        <property name="connection.url">jdbc:mysql://118.89.44.152/FileShareSystem</property>
+        <property name="connection.username">jdbc</property>
         <property name="connection.password">password</property>
+        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+        <!-- 配置数据库方言dialect -->
+        <property name="dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property>
         <property name="show_sql">true</property>
         <property name="format_sql">true</property>
 

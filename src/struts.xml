@@ -35,9 +35,10 @@
     <package name="login" namespace="/" extends="struts-default">
         <action name="signIn" class="com.filesharesystem.action.SignInAction">
             <result name="admin">./admin/index.jsp</result>
-            <result name="user">./user/index.jsp</result>
+            <result name="user" type="redirect">./user/index.jsp</result>
             <result name="error">./login.jsp</result>
         </action>
+
         <action name="signUp" class="com.filesharesystem.action.SignUpAction">
             <result name="success">./user/index.jsp</result>
             <result name="error">./login.jsp</result>
@@ -45,11 +46,13 @@
     </package>
     <package name="userOperation" namespace="/user" extends="Interceptor">
     </package>
+
     <package name="file" namespace="/file" extends="struts-default">
         <action name="CommitFile" class="com.filesharesystem.action.file.CommitFileAction">
             <result name="success">./</result>
             <result name="input">./</result>
         </action>
+<<<<<<< HEAD
         <action name="DeleteFile" class="com.filesharesystem.action.file.DeleteAction">
             <result name="success">./</result>
             <result name="input">./</result>
@@ -85,6 +88,10 @@
         <action name="VisitFile" class="com.filesharesystem.action.file.VisitAction">
             <result name="success">./</result>
             <result name="input">./</result>
+=======
+        <action name="FileSet" class="com.filesharesystem.action.file.GetFileAction">
+            <result name="success">../index.jsp</result>
+>>>>>>> f29daa6a404686c2fa6df301526da2a67c8dde95
         </action>
     </package>
 </struts>

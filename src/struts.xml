@@ -90,7 +90,7 @@
         </action>
 
         <action name="FileSet" class="com.filesharesystem.action.file.GetFileAction">
-            <result name="success">../index.jsp</result>
+            <result name="success">../realindex.jsp</result>
         </action>
     </package>
 </struts>

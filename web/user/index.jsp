@@ -7,9 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="s" uri="/struts-tags"%>
-<%
 
-%>
 <html>
 <head>
     <title></title>
@@ -22,35 +20,26 @@
             margin-top: 90px;
         }
     </style>
+    <script type="text/javascript">
+
+    </script>
 </head>
 <body>
 <%@include file="../static/jsp/header.jsp"%>
 <div class="container" id="box">
     <div class="row">
-        <div class="col-lg-5">
+        <div class="col-lg-5" id="list">
             <ul class="list-group">
-                <li class="list-group-item"><a href="#">上传文件</a></li>
-                <li class="list-group-item"><a href="#">修改文件信息</a></li>
-                <li class="list-group-item"><a href="#">修改用户信息</a></li>
+                <li class="list-group-item"><a href="#update" >上传文件</a></li>
+                <li class="list-group-item"><a href="#alterfile" >修改文件信息</a></li>
+                <li class="list-group-item"><a href="#alteruser" >修改用户信息</a></li>
                 <li class="list-group-item"><a href="<%session.invalidate();%>">退出登录</a></li>
             </ul>
         </div>
-        <div class="col-lg-7">
-            <div id="main" style="width: 600px;height: 400px;">
-                <form action="" method="post">
-                    <div class="form-group">
-                        <label>上传文件</label>
-                        <input class="form-control" type="file" name="filepath">
-                    </div>
-                    <div class="form-group">
-                        <label>文件名</label>
-                        <input class="form-control" type="text" name="filename" placeholder="请输入文件名"> </div>
-                    <div class="form-group">
-
-                        <button type="submit" class="btn mt-2 btn-outline-dark">登陆</button>
-                    </div>
-                </form>
-            </div>
+        <div class="col-lg-7" >
+            <section id="update">1</section>
+            <section id="alterfile">2</section>
+            <section id="alteruser">3</section>
         </div>
     </div>
 </div>

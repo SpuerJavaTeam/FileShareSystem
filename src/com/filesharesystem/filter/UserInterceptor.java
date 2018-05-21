@@ -1,5 +1,7 @@
-package com.filesharesystem.action;
+package com.filesharesystem.filter;
 
+import com.filesharesystem.action.SignInAction;
+import com.filesharesystem.action.SignUpAction;
 import com.opensymphony.xwork2.ActionInvocation;
 import com.opensymphony.xwork2.interceptor.Interceptor;
 

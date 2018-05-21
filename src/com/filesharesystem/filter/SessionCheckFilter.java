@@ -1,4 +1,4 @@
-package com.filesharesystem.action;
+package com.filesharesystem.filter;
 /*
  *Session检查
  *@author gh

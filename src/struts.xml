@@ -11,7 +11,7 @@
     <!--全局拦截-->
     <package name="Interceptor" extends="struts-default">
         <interceptors>
-            <interceptor name="singupInter" class="com.filesharesystem.action.UserInterceptor"/>
+            <interceptor name="singupInter" class="com.filesharesystem.filter.UserInterceptor"/>
             <interceptor-stack name="interceptor-stack">
                 <interceptor-ref name="defaultStack"/>
                 <interceptor-ref name="singupInter"/>
@@ -19,7 +19,7 @@
         </interceptors>
         <default-interceptor-ref name="interceptor-stack"/>
         <global-results>
-            <result name="login">./login.jsp</result>
+            <result name="login" type="redirect">./login.jsp</result>
         </global-results>
     </package>
     <!--验证码-->
@@ -47,6 +47,42 @@
     </package>
     <package name="file" namespace="/file" extends="struts-default">
         <action name="CommitFile" class="com.filesharesystem.action.file.CommitFileAction">
+            <result name="success">./</result>
+            <result name="input">./</result>
+        </action>
+        <action name="DeleteFile" class="com.filesharesystem.action.file.DeleteAction">
+            <result name="success">./</result>
+            <result name="input">./</result>
+        </action>
+        <action name="FavoriteFile" class="com.filesharesystem.action.file.FavoritesAction">
+            <result name="success">./</result>
+            <result name="input">./</result>
+        </action>
+        <action name="CancelFavorite" class="com.filesharesystem.action.file.FavoritesCancelAction">
+            <result name="success">./</result>
+            <result name="input">./</result>
+        </action>
+        <action name="ListFile" class="com.filesharesystem.action.file.ListUserFilesAction">
+            <result name="success">./</result>
+            <result name="input">./</result>
+        </action>
+        <action name="ListRecord" class="com.filesharesystem.action.file.ListUserRecordAction">
+            <result name="success">./</result>
+            <result name="input">./</result>
+        </action>
+        <action name="SetType" class="com.filesharesystem.action.file.SetFileTypeAction">
+            <result name="success">./</result>
+            <result name="input">./</result>
+        </action>
+        <action name="Download" class="com.filesharesystem.action.file.DownloadAction">
+            <result name="success">./</result>
+            <result name="input">./</result>
+        </action>
+        <action name="Upload" class="com.filesharesystem.action.file.UploadAction">
+            <result name="success">./</result>
+            <result name="input">./</result>
+        </action>
+        <action name="VisitFile" class="com.filesharesystem.action.file.VisitAction">
             <result name="success">./</result>
             <result name="input">./</result>
         </action>

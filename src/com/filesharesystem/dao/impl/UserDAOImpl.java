@@ -4,6 +4,7 @@ import com.filesharesystem.dao.UserDAO;
 import com.filesharesystem.models.User;
 import com.filesharesystem.utils.SessionUtil;
 import org.hibernate.*;
+import org.hibernate.cfg.Configuration;
 import org.hibernate.criterion.Restrictions;
 import org.hibernate.criterion.SimpleExpression;
 
@@ -127,10 +128,7 @@ public class UserDAOImpl extends BaseDAOImpl implements UserDAO {
         }
         return user;
     }
-
-
-
-/*    public static void main(String[] args) {
+    /*    public static void main(String[] args) {
         UserDAO test = new UserDAOImpl();
         List<User> users = test.getUsers();
         User user = test.checkUser("laisicheng","123456");

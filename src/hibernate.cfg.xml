@@ -9,14 +9,11 @@
         <property name="connection.password">password</property>
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
         <!-- 配置数据库方言dialect -->
-<<<<<<< HEAD
         <property name="connection.url">jdbc:mysql://118.89.44.152/filesharesystem</property>
         <property name="dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property>
         <property name="connection.username">jdbc</property>
         <property name="connection.password">password</property>
-=======
         <property name="dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property>
->>>>>>> f29daa6a404686c2fa6df301526da2a67c8dde95
         <property name="show_sql">true</property>
         <property name="format_sql">true</property>
 

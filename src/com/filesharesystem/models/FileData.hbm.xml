@@ -7,8 +7,8 @@
         <id name="id" column="id" type="integer">
             <generator class="native"/>
         </id>
-        <many-to-one name="visitorId" column="visitorid"/>
-        <many-to-one name="fid" column="fid"/>
+        <many-to-one name="visitorId" column="visitorid" lazy="false"/>
+        <many-to-one name="fid" column="fid" lazy="false"/>
         <property name="type" column="type" type="integer"/>
         <property name="created_at" column="created_at" type="timestamp"/>
         <property name="updated_at" column="updated_at" type="timestamp"/>

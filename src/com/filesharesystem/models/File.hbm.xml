@@ -12,7 +12,7 @@
         <property name="fileType" column="filetype" type="string"/>
         <property name="path" column="path" type="string"/>
          <!--连接到USER表 多对一的关系-->
-        <many-to-one name="uid" column="uid"/>
+        <many-to-one name="uid" column="uid" lazy="false"/>
         <property name="status" column="status" type="integer"/>
         <property name="type" column="type" type="integer"/>
         <property name="created_at" column="created_at" type="timestamp"/>

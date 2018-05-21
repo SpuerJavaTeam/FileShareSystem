@@ -43,7 +43,6 @@ public class GetFileAction extends ActionSupport
         files = new FileDAOImpl ().getFiles ();
         int countfiles = files.size ();
         ActionContext.getContext ().put ( "count",countfiles );
-        // TODO: 2018/5/16 显示上传用户 
         ActionContext.getContext ().put ( "list",files );
         return Action.SUCCESS;
     }

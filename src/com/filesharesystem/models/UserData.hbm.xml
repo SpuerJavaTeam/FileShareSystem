@@ -9,7 +9,7 @@
                 <param name="property">user</param>
             </generator>
         </id>
-        <one-to-one name="user" constrained="true"/>
+        <one-to-one name="user" constrained="true" lazy="false"/>
         <property name="gender" column="gender" type="integer"/>
         <property name="age" column="age" type="integer"/>
         <property name="birthday" column="birthday" type="timestamp"/>

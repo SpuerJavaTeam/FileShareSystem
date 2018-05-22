@@ -21,7 +21,7 @@
           <div class="card bg-gradient" style="border-radius:25px;">
             <div class="card-body p-5">
               <h2 class="pb-3">登陆</h2>
-              <form action="signIn.action" method="post">
+              <form action="<%=request.getContextPath()%>signIn.action" method="post">
                 <div class="form-group">
                   <label>用户名</label>
                   <input class="form-control" type="text" name="username" placeholder="请输入用户名"> </div>

@@ -16,7 +16,7 @@
         </init-param>
         <init-param>
             <param-name>notCheckURLList</param-name>
-            <param-value>/login.jsp,/index.jsp,/register.jsp,/user/updatefile.jsp,/user/updateuser.jsp,/user/upfile.jsp</param-value>
+            <param-value>/login.jsp,/index.jsp,/register.jsp,/user/updatefile.jsp,/user/updateuser.jsp,/user/up.jsp</param-value>
         </init-param>
     </filter>
 

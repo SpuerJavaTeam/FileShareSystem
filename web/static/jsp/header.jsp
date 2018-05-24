@@ -8,13 +8,13 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
-    User user = (User)ServletActionContext.getRequest ().getSession ().getAttribute ( "user" );
-    String username=null;
-    int type=1;
-    if (user!=null){
+    User user = (User) ServletActionContext.getRequest ().getSession ().getAttribute ( "user" );
+    String username = null;
+    int type = 1;
+    if (user != null) {
         username = user.getUsername ();
         type = user.getType ();
-    }else {
+    } else {
 
     }
 %>
@@ -26,16 +26,19 @@
             <i class="fa d-inline fa-lg fa-cloud"></i>
             <b>&nbsp;文件共享系统</b>
         </a>
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar2SupportedContent">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                data-target="#navbar2SupportedContent">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse text-center justify-content-end" id="navbar2SupportedContent">
-            <% if (user != null){%>
-                <%if (type == 1){%>
-            <a class="btn navbar-btn ml-2 btn-light text-success" href="#"><%=username%></a>
+            <% if (user != null) {
+                if (type == 1) {%>
+            <a class="btn navbar-btn ml-2 btn-light text-success" href="#"><%=username%>
+            </a>
             <a class="btn navbar-btn ml-2 btn-light text-success" href="/index.jsp">&nbsp;退出登录</a>
-            <%}else if(type ==2){%>
-            <a class="btn navbar-btn ml-2 btn-light text-success" href="#"><%=username%></a>
+            <%} else if (type == 2) {%>
+            <a class="btn navbar-btn ml-2 btn-light text-success" href="#"><%=username%>
+            </a>
             <a class="btn navbar-btn ml-2 btn-light text-success" href="/index.jsp">&nbsp;退出登录</a>
             <%
                 }

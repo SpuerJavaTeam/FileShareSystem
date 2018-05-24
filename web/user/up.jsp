@@ -6,6 +6,7 @@
   Time: 20:58
   To change this template use File | Settings | File Templates.
 --%>
+
 <html>
 <head>
     <title></title>
@@ -18,16 +19,20 @@
         <input type="hidden" name="status" value="1">
         <input type="hidden" name="type" value="1">
         <div class="form-group">
-            <label>username</label>
+            <label>updateFile</label>
             <br/>
-            <input class="form-control" type="text" name="username" placeholder="insert new filename" >
+            <input type="file" name="filePath" >
         </div>
         <div class="form-group">
-            <label>filename</label>
-            <br/>
-            <input class="form-control" type="password" name="password" placeholder="insert new password" >
+            <label>fileName</label>
+            <input class="form-control" type="text" name="fileName" placeholder="insert fileName">
         </div>
         <div class="form-group">
+            <label>fileType</label>
+            <select class="form-control" name="filetype">
+                <option value="music">music</option>
+                <option value="doc">document</option>
+            </select>
             <button type="submit" class="btn mt-2 btn-outline-dark">submit</button>
         </div>
     </form>

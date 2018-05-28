@@ -8,8 +8,8 @@ public class User{
     private String username;
     private String password;
     private String email;
-    private int status;
-    private int type;
+    private int status=1;
+    private int type=1;
     private Date created_at;
     private Date updated_at;
 

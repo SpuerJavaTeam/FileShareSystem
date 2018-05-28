@@ -24,6 +24,11 @@ public class SessionUtil {
         return session;
     }
 
+    public static Session getCurrentSession() {
+        Session session = factory.getCurrentSession ();
+        return session;
+    }
+
     public static void closeSession(Session session) throws Exception{
         try {
             if (session != null) {

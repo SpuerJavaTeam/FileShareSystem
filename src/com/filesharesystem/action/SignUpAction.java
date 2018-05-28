@@ -31,36 +31,29 @@ import java.util.Map;
 public class SignUpAction extends ActionSupport implements SessionAware {
     private static final long serialVersionUID = 8790215995796599624L;
     private Map<String, Object> session = ActionContext.getContext().getSession();// 产生session
-
+    private Integer random = (int)((Math.random()*9+1)*100000);
     private String uid;
     private String username;
     private String password;
     private String email;
-    private int gender;
-    private int age;
-    private Date birthday;
-    private String QQ;
-    private String phone;
+
 
     @Override
     public String execute() {
         UserDAO userDAO = new UserDAOImpl();
         String uuid = null;
-        if (userDAO.getUserByName(username) != null) {
+        if (userDAO.getUserByName(username) == null) {
             return Action.ERROR;
         } else {
             User user = new User();
             user.setUsername(username);
             user.setPassword(password);
             user.setEmail(email);
-            userDAO.saveOrUpdate(user);
+            user.setType ( 1 );
+            user.setStatus ( 1 );
+            userDAO.save (user);
             session.put("user",user);
 
-            IP ip = new IP();
-            ip.setUid(user);
-            // TODO: 18.4.16 获取ip
-            ip.setIpv4("127.0.0.1");
-            new IPDAOImpl().saveOrUpdate(ip);
             return Action.SUCCESS;
         }
 
@@ -96,46 +89,6 @@ public class SignUpAction extends ActionSupport implements SessionAware {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public int getGender() {
-        return gender;
-    }
-
-    public void setGender(int gender) {
-        this.gender = gender;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public Date getBirthday() {
-        return birthday;
-    }
-
-    public void setBirthday(Date birthday) {
-        this.birthday = birthday;
-    }
-
-    public String getQQ() {
-        return QQ;
-    }
-
-    public void setQQ(String QQ) {
-        this.QQ = QQ;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
     }
 
     @Override

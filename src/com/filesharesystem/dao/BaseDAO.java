@@ -4,6 +4,8 @@ public interface BaseDAO {
 //    新增或者保存
     boolean saveOrUpdate(Object obj);
 
+    boolean save(Object obj);
+
 //    删除
     boolean delete(Object obj);
 

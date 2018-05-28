@@ -33,7 +33,7 @@ public class SignInAction extends ActionSupport implements SessionAware {
     public String execute() {
         IP ip = new IP();
         String ipAddress = ServletActionContext.getRequest().getRemoteAddr();
-        String  checkCode = (String) session.get("checkCode");
+        String checkCode = (String) session.get("checkCode");
         System.out.println("获取验证码"+checkCode);
         System.out.println("IP地址"+ipAddress);
         if(this.username == null || this.username.equals("") || this.username.trim().equals("")){
@@ -46,7 +46,7 @@ public class SignInAction extends ActionSupport implements SessionAware {
             addActionError("验证码错误");
         }
         User user = dao.checkUser(username, password);
-        if (user != null) {
+        if (user != null && checkCode.equals ( verify ) ) {
             session.put ( "user",user );
             ActionContext.getContext ().setSession ( session );
             System.out.println("用户名"+user.getUsername());

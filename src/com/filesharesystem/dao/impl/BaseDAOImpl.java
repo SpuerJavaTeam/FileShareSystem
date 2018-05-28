@@ -1,15 +1,9 @@
 package com.filesharesystem.dao.impl;
 
 import com.filesharesystem.dao.BaseDAO;
-import com.filesharesystem.models.IP;
 import com.filesharesystem.utils.SessionUtil;
-import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.springframework.web.context.request.SessionScope;
-
-import java.util.List;
-import java.util.Set;
 
 public class BaseDAOImpl implements BaseDAO {
     /**
@@ -24,18 +18,43 @@ public class BaseDAOImpl implements BaseDAO {
         Session session = null;
         Transaction transaction = null;
         try {
-            session = SessionUtil.openSession();
-            transaction =  session.beginTransaction();
-            session.saveOrUpdate(obj.getClass().getName(), obj);
-            transaction.commit();
+            session = SessionUtil.openSession ();
+            transaction = session.beginTransaction ();
+            session.saveOrUpdate ( obj.getClass ().getName (), obj );
+            transaction.commit ();
             ret = true;
         } catch (Exception e) {
-            e.printStackTrace();
-            transaction.rollback();
+            e.printStackTrace ();
+            transaction.rollback ();
         } finally {
             if (session != null) {
-               session.close();
+                session.close ();
             }
+        }
+
+        return ret;
+    }
+    /**
+     * 传入obj 根据obj的类型进行插入
+     *
+     * @param obj
+     * @return
+     */
+    @Override
+    public boolean save(Object obj) {
+        boolean ret = false;
+        Session session = null;
+        Transaction transaction = null;
+        try {
+            session = SessionUtil.getCurrentSession ();
+            transaction = session.beginTransaction ();
+            session.save ( obj.getClass ().getName (), obj );
+            transaction.commit ();
+            ret = true;
+        } catch (Exception e) {
+            e.printStackTrace ();
+            assert transaction != null;
+            transaction.rollback ();
         }
 
         return ret;
@@ -53,18 +72,18 @@ public class BaseDAOImpl implements BaseDAO {
         Session session = null;
         Transaction transaction = null;
         try {
-            session = SessionUtil.openSession();
-            transaction = session.beginTransaction();
-            session.delete(obj.getClass().getName(), obj);
-            System.out.println(obj.getClass().getName());
-            transaction.commit();
+            session = SessionUtil.openSession ();
+            transaction = session.beginTransaction ();
+            session.delete ( obj.getClass ().getName (), obj );
+            System.out.println ( obj.getClass ().getName () );
+            transaction.commit ();
             ret = true;
         } catch (Exception e) {
-            e.printStackTrace();
-            transaction.rollback();
+            e.printStackTrace ();
+            transaction.rollback ();
         } finally {
             if (session != null) {
-                session.close();
+                session.close ();
             }
         }
         return ret;
@@ -79,26 +98,25 @@ public class BaseDAOImpl implements BaseDAO {
      * @return
      */
     @Override
-    public Object getObject (Class class_, String name) {
-        Object obj= new Object();
+    public Object getObject(Class class_, String name) {
+        Object obj = new Object ();
         Session session = null;
         Transaction transaction = null;
         try {
-            session = SessionUtil.openSession();
-            transaction = session.beginTransaction();
-            obj = session.get(class_.getClass(), name);
-            SessionUtil.closeSession(session);
+            session = SessionUtil.openSession ();
+            transaction = session.beginTransaction ();
+            obj = session.get ( class_.getClass (), name );
+            SessionUtil.closeSession ( session );
         } catch (Exception e) {
-            e.printStackTrace();
-            transaction.rollback();
+            e.printStackTrace ();
+            transaction.rollback ();
         } finally {
-            if ( session != null ){
-                session.close();
+            if (session != null) {
+                session.close ();
             }
         }
         return obj;
     }
-
 
 
 }

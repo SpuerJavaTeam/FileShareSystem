@@ -21,4 +21,5 @@ public interface UserDAO extends BaseDAO {
 
 //    通过用户名和用户密码获取用户
     User checkUser(String username, String password);
+
 }

@@ -31,7 +31,6 @@ import java.util.Map;
 public class SignUpAction extends ActionSupport implements SessionAware {
     private static final long serialVersionUID = 8790215995796599624L;
     private Map<String, Object> session = ActionContext.getContext().getSession();// 产生session
-    private Integer random = (int)((Math.random()*9+1)*100000);
     private String uid;
     private String username;
     private String password;
@@ -53,10 +52,8 @@ public class SignUpAction extends ActionSupport implements SessionAware {
             user.setStatus ( 1 );
             userDAO.save (user);
             session.put("user",user);
-
             return Action.SUCCESS;
         }
-
     }
 
     public String getUid() {

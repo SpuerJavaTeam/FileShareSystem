@@ -10,13 +10,12 @@
 
 <%
     User userIndex = (User) ServletActionContext.getRequest ().getSession ().getAttribute ( "user" );
-    if (userIndex != null){
-        session.setAttribute ( "user",userIndex );
-    }
-    else {
+    if (userIndex != null) {
+        session.setAttribute ( "user", userIndex );
+    } else {
 %>
 <script>
-    alert("noob");
+    alert("未登录");
 </script>
 <%}%>
 
@@ -40,22 +39,101 @@
 <div class="container" id="box">
     <div class="row">
         <div class="col-lg-5" id="list">
-            <ul class="list-group">
-                <li class="list-group-item"><a onclick="showAtRight('up.jsp')">上传文件</a></li>
-                <li class="list-group-item"><a onclick="showAtRight('updatefile.jsp')">修改文件信息</a></li>
-                <li class="list-group-item"><a onclick="showAtRight('updateuser.jsp')">修改用户信息</a></li>
+            <ul class="list-group" id="myTab">
+                <li class="list-group-item"><a href="#upfile">上传文件</a></li>
+                <li class="list-group-item"><a href="#updatefile">修改文件</a></li>
+                <li class="list-group-item"><a href="#updateuser">修改用户</a></li>
                 <li class="list-group-item"><a href="<%session.invalidate();%>">退出登录</a></li>
             </ul>
         </div>
 
         <div class="col-lg-7">
             <div id="content">
-                <h4>
-                    <p>欢迎来到用户管理模块</p>
-                </h4>
+                <div class="tab-content">
+                    <div class="tab-pane active" id="upfile">
+                        <div class="content">
+                            <form action="<%=request.getContextPath()%>/file/CommitFile.action" method="post">
+                                <input type="hidden" name="session" value="">
+                                <input type="hidden" name="status" value="1">
+                                <input type="hidden" name="type" value="1">
+                                <div class="form-group">
+                                    <label>上传文件</label>
+                                    <br/>
+                                    <input type="file" name="filePath">
+                                </div>
+                                <div class="form-group">
+                                    <label>文件名</label>
+                                    <input class="form-control" type="text" name="fileName"
+                                           placeholder="insert fileName">
+                                </div>
+                                <div class="form-group">
+                                    <label>文件类型</label>
+                                    <select class="form-control" name="filetype">
+                                        <option value="music">music</option>
+                                        <option value="doc">document</option>
+                                    </select>
+                                    <button type="submit" class="btn mt-2 btn-outline-dark">提交</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="updatefile">
+                        <div class="content">
+                            <form action="" method="post">
+                                <input type="hidden" name="session" value="">
+                                <input type="hidden" name="status" value="1">
+                                <input type="hidden" name="type" value="1">
+                                <div class="form-group">
+                                    <label>oldfilename</label>
+                                    <br/>
+                                    <input class="form-control" type="text" name="oldfilename"
+                                           placeholder="insert old filename">
+                                </div>
+                                <div class="form-group">
+                                    <label>filename</label>
+                                    <br/>
+                                    <input class="form-control" type="text" name="filename"
+                                           placeholder="insert new filename">
+                                </div>
+                                <div class="form-group">
+                                    <label>changeFileType</label>
+                                    <select class="form-control" name="filetype">
+                                        <option value="music">music</option>
+                                        <option value="doc">document</option>
+                                    </select>
+                                    <button type="submit" class="btn mt-2 btn-outline-dark">submit</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="updateuser">
+                        <div class="content">
+                            <form action="" method="post">
+                                <input type="hidden" name="session" value="">
+                                <input type="hidden" name="status" value="1">
+                                <input type="hidden" name="type" value="1">
+                                <div class="form-group">
+                                    <label>username</label>
+                                    <br/>
+                                    <input class="form-control" type="text" name="username"
+                                           placeholder="insert new filename">
+                                </div>
+                                <div class="form-group">
+                                    <label>filename</label>
+                                    <br/>
+                                    <input class="form-control" type="text" name="password"
+                                           placeholder="输入新的用户名">
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn mt-2 btn-outline-dark">submit</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
 
+        </div>
     </div>
 </div>
 <%@include file="../static/jsp/tail.jsp" %>
@@ -70,78 +148,13 @@
         crossorigin="anonymous"></script>
 
 <script type="text/javascript">
-
-    $(document).ready(function () {
-        $('ul > li').click(function (e) {
-            $('ul > li').removeClass('active');
-            $(this).addClass('active');
-        });
-    });
-
-    function executeScript(html) {
-
-        var reg = /<script[^>]*>([^\x00]+)$/i;
-        var htmlBlock = html.split("<\/script>");
-        for (var i in htmlBlock) {
-            var blocks;//匹配正则表达式的内容数组，blocks[1]就是真正的一段脚本内容，因为前面reg定义我们用了括号进行了捕获分组
-            if (blocks = htmlBlock[i].match(reg)) {
-                //清除可能存在的注释标记，对于注释结尾-->可以忽略处理，eval一样能正常工作
-                var code = blocks[1].replace(/<!--/, '');
-                try {
-                    eval(code) //执行脚本
-                }
-                catch (e) {
-                }
-            }
-        }
-    }
-
-
-    function showAtRight(url) {
-        var xmlHttp;
-
-        if (window.XMLHttpRequest) {
-            // code for IE7+, Firefox, Chrome, Opera, Safari
-            xmlHttp = new XMLHttpRequest();    //创建 XMLHttpRequest对象
-        }
-
-        xmlHttp.onreadystatechange = function () {
-            //onreadystatechange — 当readystate变化时调用后面的方法
-
-            if (4 === xmlHttp.readyState) {
-                //xmlHttp.readyState == 4    ——    finished downloading response
-
-                if (xmlHttp.status === 200) {
-                    //xmlHttp.status == 200        ——    服务器反馈正常
-
-                    document.getElementById("content").innerHTML = xmlHttp.responseText;    //重设页面中id="content"的div里的内容
-                    executeScript(xmlHttp.responseText);    //执行从服务器返回的页面内容里包含的JavaScript函数
-                }
-                //错误状态处理
-                else if (xmlHttp.status === 404) {
-                    alert("404 Not Found");
-                    /* 对404的处理 */
-                    return;
-                }
-                else if (xmlHttp.status == 403) {
-                    alert("403 Forbidden");
-                    /* 对403的处理  */
-                    return;
-                }
-                else {
-                    alert(xmlHttp.status);
-                    /* 对出现了其他错误代码所示错误的处理   */
-                    return;
-                }
-            }
-
-        };
-
-        //把请求发送到服务器上的指定文件（url指向的文件）进行处理
-        xmlHttp.open("GET", url, true);        //true表示异步处理
-        xmlHttp.send();
-    }
+    $(function () {
+        $('#myTab a:last').tab('show');
+    })
+    $('#myTab a').click(function (e) {
+        e.preventDefault;
+        $(this).tab('show');
+    })
 </script>
-
 </body>
 </html>
